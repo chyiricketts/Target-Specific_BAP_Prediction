@@ -20,30 +20,55 @@ import random
 from sklearn.model_selection import KFold
 from sklearn.model_selection import StratifiedKFold
 from collections import defaultdict
+from rdkit.Chem import rdFingerprintGenerator
+from rdkit.ML.Cluster import Butina
+from rdkit.Chem.Scaffolds import MurckoScaffold
+from collections import defaultdict
 
-BASE_DIR = "/rds/general/user/cr725/home/aev-plig_research"
+BASE_DIR = Path.cwd().parents[0]
+
+def make_tmthresholds_df(tm_df):
+
+    pdbbind_df = pd.read_csv(os.path.join(BASE_DIR, "data/files/pdbbind_processed.csv"))
+    bindingnet_df = pd.read_csv(os.path.join(BASE_DIR, "data/files/bindingnet_processed.csv"))
+    bindingdb_df = pd.read_csv(os.path.join(BASE_DIR, "data/files/bindingdb_processed.csv"))
+
+    # Split unique_id into source + clean id
+    # Example:
+    # pdbbind_3zzf -> source=pdbbind, clean_uid=3zzf
+    # bindingnet_MAPK14_x_y -> source=bindingnet, clean_uid=MAPK14_x_y
+
+    tm_df[["source", "clean_uid"]] = tm_df["unique_id"].str.split("_",n=1,expand=True)
+    tm_df["source"] = tm_df["source"].str.lower()
+
+    # Separate by dataset
+    pdbbind_tm_df = tm_df[tm_df["source"] == "pdbbind"]
+    bindingnet_tm_df = tm_df[tm_df["source"] == "bindingnet"]
+    bindingdb_tm_df = tm_df[tm_df["source"] == "bindingdb"]
+
+    # Match rows
+    filtered_pdbbind_df = pdbbind_df[pdbbind_df["PDB_code"].str.lower().isin(pdbbind_tm_df["clean_uid"].str.lower())]
+    filtered_bindingnet_df = bindingnet_df[bindingnet_df["unique_identify"].str.lower().isin(bindingnet_tm_df["clean_uid"].str.lower())]
+    filtered_bindingdb_df = bindingdb_df[bindingdb_df["unique_id"].str.lower().isin(bindingdb_tm_df["clean_uid"].str.lower())]
+
+    # Print sizes
+    print("PDBBind:", len(filtered_pdbbind_df))
+    print("BindingNet:", len(filtered_bindingnet_df))
+    print("BindingDB:", len(filtered_bindingdb_df))
+
+    return filtered_pdbbind_df, filtered_bindingnet_df, filtered_bindingdb_df
 
 
-
-def build_dataset(protein, pdbbind_path, bindingnet_path, bindingdb_path):
-    print("********************************")
-    print(f"Building Dataset for {protein}")
-
-    # csvs
-    pdbbind_data = pd.read_csv(pdbbind_path, index_col=0)
-    bindingnet_data = pd.read_csv(bindingnet_path, index_col=0)
-    bindingdb_data = pd.read_csv(bindingdb_path, index_col=0)
-    fep_data = pd.read_csv(os.path.join(BASE_DIR, f"training_sets/fep_train/fep_train_{protein}.csv"))
-
+def build_dataset(protein, pdbbind_data, bindingnet_data, bindingdb_data):
     data = []
 
     # pdbbind
     print(f"PDBbind data contains {len(pdbbind_data)} rows")
     for _, row in tqdm(pdbbind_data.iterrows()):
         if row["refined"]:
-            folder = os.path.join(BASE_DIR, "databases/pdbbind/refined-set")
+            folder = os.path.join(BASE_DIR, "data/raw/pdbbind/refined-set")
         else:
-            folder = os.path.join(BASE_DIR, "databases/pdbbind/general-set")
+            folder = os.path.join(BASE_DIR, "data/raw/pdbbind/general-set")
         pdb = row["PDB_code"]
         ligand_path = os.path.join(folder, pdb, f'{pdb}_ligand.mol2')
         protein_path = os.path.join(folder, pdb, f'{pdb}_protein.pdb')
@@ -58,7 +83,7 @@ def build_dataset(protein, pdbbind_path, bindingnet_path, bindingdb_path):
 
     # bindingnet
     print(f"BindingNet data contains {len(bindingnet_data)} rows")
-    folder = os.path.join(BASE_DIR, "databases/bindingnet/from_chembl_client/")
+    folder = os.path.join(BASE_DIR, "data/raw/bindingnet/from_chembl_client/")
     for index, row in tqdm(bindingnet_data.iterrows()):
         unique_identify = row['unique_identify']
         target = row['target']
@@ -78,7 +103,7 @@ def build_dataset(protein, pdbbind_path, bindingnet_path, bindingdb_path):
 
     # bindingdb
     print(f"BindingDB data contains {len(bindingdb_data)} rows")
-    folder = os.path.join(BASE_DIR, "databases/bindingdb/surflex/")
+    folder = os.path.join(BASE_DIR, "data/raw/bindingdb/surflex/")
     for index, row in tqdm(bindingdb_data.iterrows()):
         ligand_path = folder + row["folder"] + "/" + row["mol2_file"]
         protein_path = folder + row["folder"] + "/" + row["pdb_file"]
@@ -89,20 +114,6 @@ def build_dataset(protein, pdbbind_path, bindingnet_path, bindingdb_path):
             "protein_path": protein_path,
             "ligand_path": ligand_path,
             "pK": row["pK"]
-        }
-        data.append(info)
-
-    # fep
-    print(f"FEP data contains {len(fep_data)} rows")
-    for _, row in tqdm(fep_data.iterrows(), total=len(fep_data)):
-        protein_path = row["pdb_file"]
-        ligand_path = row["sdf_file"]
-        info = {
-            "unique_id": row["unique_id"],
-            "database": "fep",
-            "protein_path": protein_path,
-            "ligand_path": ligand_path,
-            "pK": row["dg_exp_1343"]/-1.36
         }
         data.append(info)
 
@@ -135,9 +146,9 @@ def standardize_mol(sdf_file):
 
 # helper function for tanimoto fingerprints
 def gen_ts_fep(protein_fullname, morgan_gen):
+
     # Fixed Morgan Fingerprints for 1184 FEP Data
-    fep_csv = pd.read_csv(os.path.join(BASE_DIR, "fep/analysis/prediction_info_1184.csv"))
-    
+    fep_csv = pd.read_csv(os.path.join(BASE_DIR, "data/processed/fep_prediction_info.csv"))
     fep_csv = fep_csv[fep_csv["protein"] == protein_fullname]
     
     fep_data = []
@@ -216,10 +227,8 @@ def tanimoto_process(data, fep_data, morgan_gen):
 
 
 # main functino for tanimoto fingerprints
-def add_fep_tanimoto(df, protein_fullname):
-    print("*****************************")
-    print(f"Adding Tanimoto fingerprints for {protein_fullname} on dataset of length {len(df)}")
-    morgan_gen = GetMorganGenerator(radius=3, fpSize=2048)
+def add_fep_tanimoto(df, protein_fullname, morgen_gen):
+
     fep_data = gen_ts_fep(protein_fullname, morgan_gen)
     df = tanimoto_process(df, fep_data, morgan_gen)
 
@@ -337,7 +346,6 @@ def cluster_kfold(name, df, n_splits=5, similarity_cutoff=0.8, random_state=42):
     Butina clustering on Morgan fingerprints.
     Entire clusters are assigned to folds together.
     """
-    print("**************************")
     print(f"Cluster K-Fold (K={n_splits}) on dataset of length {len(df)}")
 
     random.seed(random_state)
@@ -415,91 +423,234 @@ def cluster_kfold(name, df, n_splits=5, similarity_cutoff=0.8, random_state=42):
               f"train={len(train_df)}, val={len(val_df)}")
 
         # Save folds
-        output_dir = os.path.join(BASE_DIR, "training_sets", "final", name)
+        output_dir = os.path.join(BASE_DIR, "data", "training_sets", name, "cluster-split")
         os.makedirs(output_dir, exist_ok=True)
-        train_path = os.path.join(output_dir,f"{name}_cluster_fold-{val_fold_idx+1}_train2.csv")
-        val_path = os.path.join(output_dir,f"{name}_cluster_fold-{val_fold_idx+1}_valid2.csv")
+        train_path = os.path.join(output_dir,f"{name}_cluster_fold-{val_fold_idx+1}_train.csv")
+        val_path = os.path.join(output_dir,f"{name}_cluster_fold-{val_fold_idx+1}_valid.csv")
         train_df.to_csv(train_path, index=False)
         val_df.to_csv(val_path, index=False)
 
     return splits, folds_indices, df, fps
 
 
+def random_kfold(name, df, n_splits=5, shuffle=True, random_state=42):
+    print(f"Random K-Fold (K={n_splits}) on dataset of length {len(df)}")
 
-def generate_split_report(
-    name,
-    splits,
-    folds_indices,
-    df,
-    fps,
-    title="Split Report"
-):
+    random_kf = KFold(n_splits=n_splits, shuffle=shuffle, random_state=random_state)    
+    
+    splits = []
+    folds_indices = []
 
-    print("\n" + "=" * 60)
-    print(f"{title}: {name}")
+    for fold_idx, (train_idx, val_idx) in enumerate(random_kf.split(df)):
+        train_df = df.iloc[train_idx].reset_index(drop=True)
+        val_df   = df.iloc[val_idx].reset_index(drop=True)
+        splits.append((train_df, val_df))
+        folds_indices.append((train_idx, val_idx))
+        
+        # Save folds
+        output_dir = os.path.join(BASE_DIR, "data", "training_sets", name, "random-split")
+        os.makedirs(output_dir, exist_ok=True)
+        train_path = os.path.join(output_dir,f"{name}_random_fold-{fold_idx+1}_train.csv")
+        val_path = os.path.join(output_dir,f"{name}_random_fold-{fold_idx+1}_valid.csv")
+        train_df.to_csv(train_path, index=False)
+        val_df.to_csv(val_path, index=False)
+
+    return splits, folds_indices
+
+
+def scaffold_kfold_split(name, df, n_splits=5, random_state=42):
+    """
+    Scaffold-aware K-fold split using Bemis-Murcko scaffolds.
+    Entire scaffolds are assigned to folds together.
+    """
+    print(f"Scaffold Split of {n_splits}-folds for dataset of length {len(df)}")
+
+    random.seed(random_state)
+    np.random.seed(random_state)
+
+    df = df.copy().reset_index(drop=True)
+
+    # -----------------------------
+    # Generate scaffolds
+    # -----------------------------
+    scaffold_to_indices = defaultdict(list)
+
+    for idx, row in df.iterrows():
+
+        sdf_file = row["ligand_path"].replace(".mol2", ".sdf")
+
+        try:
+            mol = standardize_mol(sdf_file)
+        except:
+            continue
+
+        if mol is None:
+            continue
+
+        scaffold = MurckoScaffold.MurckoScaffoldSmiles(
+            mol=mol,
+            includeChirality=False
+        )
+
+        scaffold_to_indices[scaffold].append(idx)
+
+    scaffold_groups = list(scaffold_to_indices.values())
+
+    print(f"Generated {len(scaffold_groups)} scaffolds")
+
+    # -----------------------------
+    # Sort largest scaffolds first
+    # -----------------------------
+    scaffold_groups = sorted(
+        scaffold_groups,
+        key=len,
+        reverse=True
+    )
+
+    # -----------------------------
+    # Greedy fold assignment
+    # -----------------------------
+    folds = [[] for _ in range(n_splits)]
+    fold_sizes = [0] * n_splits
+
+    for group in scaffold_groups:
+
+        smallest_fold = int(np.argmin(fold_sizes))
+
+        folds[smallest_fold].extend(group)
+        fold_sizes[smallest_fold] += len(group)
+
+    # -----------------------------
+    # Build splits
+    # -----------------------------
+    splits = []
+    fold_indices = []
+
+    for fold_idx in range(n_splits):
+
+        val_idx = folds[fold_idx]
+
+        train_idx = [
+            idx
+            for i in range(n_splits)
+            if i != fold_idx
+            for idx in folds[i]
+        ]
+
+        train_df = df.iloc[train_idx].reset_index(drop=True)
+        val_df = df.iloc[val_idx].reset_index(drop=True)
+
+        splits.append((train_df, val_df))
+        fold_indices.append((train_idx, val_idx))
+
+        output_dir = os.path.join(BASE_DIR, "data", "training_sets", name, "scaffold-split")
+        os.makedirs(output_dir, exist_ok=True)
+        train_df.to_csv(os.path.join(output_dir, f"{name}_scaffold_fold-{fold_idx+1}_train.csv"), index=False)
+        val_df.to_csv(os.path.join(output_dir, f"{name}_scaffold_fold-{fold_idx+1}_valid.csv"), index=False)
+    
+    return splits, fold_indices
+
+
+def stratified_kfold_split(name, df, n_splits=5, random_state=42):
+    """
+    Stratified K-Fold split for regression by binning pK values.
+    This preserves the distribution of binding affinities (pK/pIC50)
+    across all folds by stratifying on quantile bins.
+    """
+    print(f"Stratified Split of {n_splits}-folds for dataset of length {len(df)}")
+    folder = "stratified-split"
+
+    df = df.copy()
+
+    df["stratify_key"] = pd.qcut(df["pK"],q=n_splits,labels=False,duplicates="drop")
+
+    # Remove rare bins that would break stratification
+    valid_keys = df["stratify_key"].value_counts()
+    valid_keys = valid_keys[valid_keys >= n_splits].index
+    df = df[df["stratify_key"].isin(valid_keys)].reset_index(drop=True)
+
+    if df is None or len(df) == 0:
+            print(f"[SKIP] {name}: empty dataframe for stratified split")
+            return None, None
+    
+    skf = StratifiedKFold(
+        n_splits=n_splits,
+        shuffle=True,
+        random_state=random_state,
+    )
+
+    folds = []
+    folds_indices = []
+
+    for fold_idx, (train_idx, val_idx) in enumerate(skf.split(df, df["stratify_key"])):
+
+        train_df = df.iloc[train_idx].reset_index(drop=True)
+        val_df = df.iloc[val_idx].reset_index(drop=True)
+
+        output_dir = os.path.join(BASE_DIR, "data", "training_sets", name, "stratified-split")
+        os.makedirs(output_dir, exist_ok=True)
+        train_df.to_csv(os.path.join(output_dir, f"{name}_stratified_fold-{fold_idx+1}_train.csv"), index=False)
+        val_df.to_csv(os.path.join(output_dir, f"{name}_stratified_fold-{fold_idx+1}_valid.csv"), index=False)
+
+        folds.append((train_df, val_df))
+        folds_indices.append((train_idx, val_idx))
+
+    return folds, folds_indices
+
+
+def generate_split_report(title, name, splits, folds_indices, df, fps):
+
     print("=" * 60)
+    print(f"{name} {title} Split Report")
 
     summary = []
-
     for i, (train_df, val_df) in enumerate(splits):
 
-        print(f"\n--- Fold {i+1} ---")
-
-        # --------------------------
-        # 1. pK distribution
-        # --------------------------
-        print("pK stats:")
-        print(val_df["pK"].describe()[["mean", "std", "min", "max"]])
-
-        # --------------------------
-        # 2. similarity leakage
-        # --------------------------
         train_idx, val_idx = folds_indices[i]
-
         train_fps = [fps[j] for j in train_idx]
-        val_fps   = [fps[j] for j in val_idx]
+        val_fps = [fps[j] for j in val_idx]
 
         max_sims = []
-
         for vfp in val_fps:
             sims = BulkTanimotoSimilarity(vfp, train_fps)
             max_sims.append(max(sims))
-
         max_sims = np.array(max_sims)
 
-        print("\nTanimoto leakage:")
-        print(f"  mean max: {max_sims.mean():.3f}")
-        print(f"  median:   {np.median(max_sims):.3f}")
-        print(f"  max:      {max_sims.max():.3f}")
-        print(f"  >0.7:     {(max_sims > 0.7).sum()}")
-        print(f"  >0.8:     {(max_sims > 0.8).sum()}")
-        print(f"  >0.9:     {(max_sims > 0.9).sum()}")
-
         summary.append({
-            "fold": i+1,
+            "fold": i + 1,
+            # pK statistics
             "pK_mean": val_df["pK"].mean(),
             "pK_std": val_df["pK"].std(),
+            "pK_min": val_df["pK"].min(),
+            "pK_max": val_df["pK"].max(),
+
+            # similarity stats
             "sim_mean_max": max_sims.mean(),
-            "sim_median": np.median(max_sims),
+            "sim_median_max": np.median(max_sims),
             "sim_max": max_sims.max(),
+            "sim_std_max": max_sims.std(),
+
+            # leakage counts
             "gt0.7": (max_sims > 0.7).sum(),
             "gt0.8": (max_sims > 0.8).sum(),
+            "gt0.9": (max_sims > 0.9).sum(),
+
+            # percentages
+            "pct_gt0.7": (max_sims > 0.7).mean() * 100,
+            "pct_gt0.8": (max_sims > 0.8).mean() * 100,
+            "pct_gt0.9": (max_sims > 0.9).mean() * 100,
         })
 
     summary_df = pd.DataFrame(summary)
-
-    print("\n" + "=" * 60)
-    print("SUMMARY ACROSS FOLDS")
-    print(summary_df)
-
+    print(summary_df.to_string(index=False))
+    summary_df.to_csv(os.path.join(BASE_DIR, "data", "training_sets", "reports", f"{title}_{name}.csv"), index=False)
     return summary_df
 
 
 if __name__ == "__main__":
 
-    morgan_gen = GetMorganGenerator(radius=3, fpSize=2048)
-
     # first generate fingerprints for random generation
+    morgan_gen = GetMorganGenerator(radius=3, fpSize=2048)
 
     proteins = {
         "MCL1": "mcl1_extra_flips",
@@ -508,38 +659,78 @@ if __name__ == "__main__":
         "HIF2A": "hif2a_automap",
         "MAPK14": "p38"
     }
-    
+
     proteins = {
         "PFKFB3": "pfkfb3_automap"
     }
 
     for protein, protein_fullname in proteins.items():
 
-        pdbbind_data_path = os.path.join(BASE_DIR, f"training_sets/target-specific/pdbbind_processed_{protein}.csv")
-        bindingnet_data_path = os.path.join(BASE_DIR, f"training_sets/target-specific/bindingnet_processed_{protein}.csv")
-        bindingdb_data_path = os.path.join(BASE_DIR, f"training_sets/target-specific/bindingdb_processed_{protein}.csv")
+        print("\n  \n" + "*" * 60)
+        print("Creating Training Sets for Protein: ", protein)
 
-        df = build_dataset(protein, pdbbind_data_path, bindingnet_data_path, bindingdb_data_path)
-        df = add_fep_tanimoto(df, protein_fullname)
+        # target specific datasets
+        pdbbind_data = pd.read_csv(os.path.join(BASE_DIR, f"data/ts_training-sets/pdbbind_processed_{protein}.csv"))
+        bindingnet_data = pd.read_csv(os.path.join(BASE_DIR, f"data/ts_training-sets/bindingnet_processed_{protein}.csv"))
+        bindingdb_data = pd.read_csv(os.path.join(BASE_DIR, f"data/ts_training-sets/bindingdb_processed_{protein}.csv"))
+
+        df = build_dataset(protein, pdbbind_data, bindingnet_data, bindingdb_data)
+        df = add_fep_tanimoto(df, protein_fullname, morgan_gen)
+
+        output_dir = os.path.join(BASE_DIR, "data", "training_sets", protein)
+        os.makedirs(output_dir, exist_ok=True)
+        df.to_csv(os.path.join(output_dir, f"ts-{protein}.csv"), index=False)
 
         cluster_splits, cluster_fold_indices, filtered_df, fps = cluster_kfold(protein, df)
-        report_cluster = generate_split_report("cluster", cluster_splits, cluster_fold_indices, filtered_df, fps)
-        
-        for threshold in np.arange(0.9, -0.1, -0.1):
+        report_cluster = generate_split_report("cluster", protein, cluster_splits, cluster_fold_indices, filtered_df, fps)
+
+        # random split
+        random_splits, random_folds_idx = random_kfold(protein, df)
+        report_random = generate_split_report("random", protein, random_splits, random_folds_idx, df, fps)
+
+        # scaffold split
+        scaffold_splits, scaffold_fold_indicies = scaffold_kfold_split(protein, df)
+        report_scaffold = generate_split_report("scaffold", protein, scaffold_splits, scaffold_fold_indicies, df, fps)
+
+        # stratified random split
+        stratified_splits, startified_folds_idx = stratified_kfold_split(protein, df)
+        report_stratified = generate_split_report("stratified", protein, stratified_splits, startified_folds_idx, df, fps)
+
+        for threshold in np.arange(0.5, -0.1, -0.1): # change the thresholds starting pattern
+
+            print("\n  \n" + "*" * 60)
+            print("Creating Training Sets for Protein: ", protein, "at threshold: ", threshold)
+
             threshold_str = f"{threshold:.1f}"
             name = protein + "_" + threshold_str
             
-            print("\n\n*********************************")
-            print(name)
-            print("*********************************")
+            # Load files
+            tm_df = pd.read_csv(os.path.join(BASE_DIR, f"data/structural_similarity/tm_{protein.lower()}_results.csv"))
+            tm_df = tm_df[tm_df["tm_score"] > threshold].copy()
 
-            # tm thresholds -- finish later, make sure it doesn't overwrite the others
-            pdbbind_data_path = os.path.join(BASE_DIR, f"training_sets/tm-align_filter/{protein}/tm-{protein}-{threshold_str}_pdbbind.csv")
-            bindingnet_data_path = os.path.join(BASE_DIR, f"training_sets/tm-align_filter/{protein}/tm-{protein}-{threshold_str}_bindingnet.csv")
-            bindingdb_data_path = os.path.join(BASE_DIR, f"training_sets/tm-align_filter/{protein}/tm-{protein}-{threshold_str}_bindingdb.csv")
+            # run processing
+            filtered_pdbbind, filtered_bindingnet, filtered_bindingdb = make_tmthresholds_df(tm_df)
+            df = build_dataset(protein, filtered_pdbbind, filtered_bindingnet, filtered_bindingdb)
+            df = add_fep_tanimoto(df, protein_fullname, morgan_gen)
 
-            df = build_dataset(protein, pdbbind_data_path, bindingnet_data_path, bindingdb_data_path)
-            df = add_fep_tanimoto(df, protein_fullname)
+            output_dir = os.path.join(BASE_DIR, "data", "training_sets", name)
+            os.makedirs(output_dir, exist_ok=True)
+            df.to_csv(os.path.join(output_dir, f"{name}.csv"), index=False)
 
+            # DATA SPLITS
+            # cluster split
             cluster_splits, cluster_fold_indices, filtered_df, fps = cluster_kfold(name, df)
-            report_cluster = generate_split_report("cluster", cluster_splits, cluster_fold_indices, filtered_df, fps)
+            report_cluster = generate_split_report("cluster", name, cluster_splits, cluster_fold_indices, filtered_df, fps)
+            
+            # random split
+            random_splits, random_folds_idx = random_kfold(name, df)
+            report_random = generate_split_report("random", name, random_splits, random_folds_idx, df, fps)
+
+            # scaffold split
+            scaffold_splits, scaffold_fold_indicies = scaffold_kfold_split(name, df)
+            report_scaffold = generate_split_report("scaffold", name, scaffold_splits, scaffold_fold_indicies, df, fps)
+
+            # stratified random split
+            stratified_splits, startified_folds_idx = stratified_kfold_split(name, df)
+            if stratified_splits is not None: 
+                report_stratified = generate_split_report("stratified", name, stratified_splits, startified_folds_idx, df, fps)

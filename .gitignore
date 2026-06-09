@@ -7,3 +7,5 @@ __pycache__/
 data/raw/*
 data/fep/*
 data/processed/*
+data/training_sets/*
+data/ts_training-sets/*
