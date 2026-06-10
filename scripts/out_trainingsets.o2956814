@@ -1,0 +1,964 @@
+Started at Tue  9 Jun 10:17:29 BST 2026
+
+  
+************************************************************
+Creating Training Sets for Protein:  HIF2A
+PDBbind data contains 4 rows
+BindingNet data contains 70 rows
+BindingDB data contains 0 rows
+Protein files found: 74
+Ligand files found: 74
+Total rows: 74
+Length of FEP data: 41
+Dropped 14 compounds with tanimoto >= 0.9
+Remaining compounds: 60
+Cluster K-Fold (K=5) on dataset of length 60
+Successfully fingerprinted 60 molecules
+Generated 40 clusters
+Fold sizes: [12, 12, 12, 12, 12]
+  Fold 1: train=48, val=12
+  Fold 2: train=48, val=12
+  Fold 3: train=48, val=12
+  Fold 4: train=48, val=12
+  Fold 5: train=48, val=12
+============================================================
+HIF2A cluster Split Report
+ fold  pK_mean   pK_std   pK_min   pK_max  sim_mean_max  sim_median_max  sim_max  sim_std_max  gt0.7  gt0.8  gt0.9  pct_gt0.7  pct_gt0.8  pct_gt0.9
+    1 6.872186 0.416374 6.054039 7.698970      0.680750        0.706275 0.733333     0.058435      7      0      0  58.333333        0.0        0.0
+    2 6.438813 0.983016 4.651695 8.045757      0.719321        0.735419 0.785714     0.064782      9      0      0  75.000000        0.0        0.0
+    3 6.540243 0.773596 4.548214 7.698970      0.737203        0.741157 0.797619     0.053117     11      0      0  91.666667        0.0        0.0
+    4 6.660678 0.857529 5.187087 7.853872      0.693249        0.748277 0.797619     0.105953      8      0      0  66.666667        0.0        0.0
+    5 6.693751 0.794156 5.657577 8.301030      0.727898        0.740352 0.769231     0.040143     10      0      0  83.333333        0.0        0.0
+Random K-Fold (K=5) on dataset of length 60
+============================================================
+HIF2A random Split Report
+ fold  pK_mean   pK_std   pK_min   pK_max  sim_mean_max  sim_median_max  sim_max  sim_std_max  gt0.7  gt0.8  gt0.9  pct_gt0.7  pct_gt0.8  pct_gt0.9
+    1 6.760278 0.939546 4.651695 8.301030      0.818272        0.769231      1.0     0.135694     10      4      4  83.333333  33.333333  33.333333
+    2 6.251269 0.899648 4.548214 7.698970      0.786680        0.757150      1.0     0.137986      9      3      3  75.000000  25.000000  25.000000
+    3 6.780596 0.760060 5.522879 7.795880      0.837988        0.898810      1.0     0.175928     10      6      6  83.333333  50.000000  50.000000
+    4 6.719415 0.480303 6.077275 7.853872      0.897999        1.000000      1.0     0.121025     12      7      7 100.000000  58.333333  58.333333
+    5 6.694113 0.713340 5.657577 8.045757      0.811360        0.777778      1.0     0.146660      9      6      4  75.000000  50.000000  33.333333
+Scaffold Split of 5-folds for dataset of length 60
+Generated 5 scaffolds
+============================================================
+HIF2A scaffold Split Report
+ fold  pK_mean   pK_std   pK_min   pK_max  sim_mean_max  sim_median_max  sim_max  sim_std_max  gt0.7  gt0.8  gt0.9  pct_gt0.7  pct_gt0.8  pct_gt0.9
+    1 6.582163 0.668267 4.548214 7.552842      0.115520        0.116279 0.138462     0.013752      0      0      0   0.000000   0.000000   0.000000
+    2 6.220038 0.550525 5.221849 7.045757      0.707359        0.680000 1.000000     0.136264      5      2      2  38.461538  15.384615  15.384615
+    3 7.200782 1.073418 5.187087 8.301030      0.401165        0.401869 0.441176     0.023308      0      0      0   0.000000   0.000000   0.000000
+    4 7.664631 0.245031 7.309804 7.853872      0.418660        0.419617 0.441176     0.022557      0      0      0   0.000000   0.000000   0.000000
+    5 6.375000 1.011163 5.660000 7.090000      1.000000        1.000000 1.000000     0.000000      2      2      2 100.000000 100.000000 100.000000
+Stratified Split of 5-folds for dataset of length 60
+============================================================
+HIF2A stratified Split Report
+ fold  pK_mean   pK_std   pK_min   pK_max  sim_mean_max  sim_median_max  sim_max  sim_std_max  gt0.7  gt0.8  gt0.9  pct_gt0.7  pct_gt0.8  pct_gt0.9
+    1 6.541972 0.654947 5.522879 7.795880      0.827764        0.740741      1.0     0.125383     12      5      4 100.000000  41.666667  33.333333
+    2 6.555138 0.870339 4.651695 8.045757      0.795661        0.769231      1.0     0.159182      9      4      4  75.000000  33.333333  33.333333
+    3 6.583052 0.905818 4.548214 7.853872      0.842167        0.802424      1.0     0.145925     10      6      5  83.333333  50.000000  41.666667
+    4 6.820097 0.841445 5.221849 8.301030      0.828197        0.907407      1.0     0.190320      9      7      6  75.000000  58.333333  50.000000
+    5 6.705411 0.666864 5.660000 7.698970      0.830906        1.000000      1.0     0.217633      8      8      7  66.666667  66.666667  58.333333
+
+  
+************************************************************
+Creating Training Sets for Protein:  HIF2A at threshold:  0.8
+PDBBind: 8
+BindingNet: 57
+BindingDB: 0
+PDBbind data contains 8 rows
+BindingNet data contains 57 rows
+BindingDB data contains 0 rows
+Protein files found: 65
+Ligand files found: 65
+Total rows: 65
+Length of FEP data: 41
+Dropped 15 compounds with tanimoto >= 0.9
+Remaining compounds: 50
+Cluster K-Fold (K=5) on dataset of length 50
+Successfully fingerprinted 50 molecules
+Generated 31 clusters
+Fold sizes: [10, 10, 10, 10, 10]
+  Fold 1: train=40, val=10
+  Fold 2: train=40, val=10
+  Fold 3: train=40, val=10
+  Fold 4: train=40, val=10
+  Fold 5: train=40, val=10
+============================================================
+HIF2A_0.8 cluster Split Report
+ fold  pK_mean   pK_std   pK_min   pK_max  sim_mean_max  sim_median_max  sim_max  sim_std_max  gt0.7  gt0.8  gt0.9  pct_gt0.7  pct_gt0.8  pct_gt0.9
+    1 6.725928 0.455525 6.054039 7.200659      0.709942        0.720000 0.755814     0.034806      7      0      0       70.0        0.0        0.0
+    2 6.690030 0.986976 4.651695 7.698970      0.656563        0.722381 0.792683     0.203231      7      0      0       70.0        0.0        0.0
+    3 6.386537 0.887128 4.548214 7.410000      0.641582        0.730835 0.753086     0.194062      6      0      0       60.0        0.0        0.0
+    4 7.036663 0.585823 6.077275 7.853872      0.698975        0.753139 0.797619     0.112392      7      0      0       70.0        0.0        0.0
+    5 7.128597 0.789495 5.660000 8.301030      0.724273        0.747330 0.797619     0.058240      7      0      0       70.0        0.0        0.0
+Random K-Fold (K=5) on dataset of length 50
+============================================================
+HIF2A_0.8 random Split Report
+ fold  pK_mean   pK_std   pK_min   pK_max  sim_mean_max  sim_median_max  sim_max  sim_std_max  gt0.7  gt0.8  gt0.9  pct_gt0.7  pct_gt0.8  pct_gt0.9
+    1 6.661047 1.038930 4.548214 7.698970      0.824434        0.877907      1.0     0.186270      7      5      5       70.0       50.0       50.0
+    2 7.156877 0.720666 5.850781 8.301030      0.681228        0.741157      1.0     0.321439      6      4      3       60.0       40.0       30.0
+    3 6.610178 0.510683 5.660000 7.309804      0.825906        0.815379      1.0     0.128192      8      6      3       80.0       60.0       30.0
+    4 6.674483 0.877258 4.651695 7.853872      0.860589        0.903614      1.0     0.148728      8      6      5       80.0       60.0       50.0
+    5 6.865170 0.687354 5.906929 8.045757      0.871431        0.907407      1.0     0.137362      9      6      5       90.0       60.0       50.0
+Scaffold Split of 5-folds for dataset of length 50
+Generated 7 scaffolds
+============================================================
+HIF2A_0.8 scaffold Split Report
+ fold  pK_mean   pK_std   pK_min   pK_max  sim_mean_max  sim_median_max  sim_max  sim_std_max  gt0.7  gt0.8  gt0.9  pct_gt0.7  pct_gt0.8  pct_gt0.9
+    1 6.582163 0.668267 4.548214 7.552842      0.693578        0.670886 1.000000     0.112874      9      7      2  26.470588  20.588235   5.882353
+    2 7.200782 1.073418 5.187087 8.301030      0.401165        0.401869 0.441176     0.023308      0      0      0   0.000000   0.000000   0.000000
+    3 7.664631 0.245031 7.309804 7.853872      0.418660        0.419617 0.441176     0.022557      0      0      0   0.000000   0.000000   0.000000
+    4 6.753333 0.969863 5.660000 7.510000      0.127876        0.103448 0.180180     0.037011      0      0      0   0.000000   0.000000   0.000000
+    5 7.280000 0.183848 7.150000 7.410000      0.540650        0.540650 1.000000     0.459350      1      1      1  50.000000  50.000000  50.000000
+Stratified Split of 5-folds for dataset of length 50
+============================================================
+HIF2A_0.8 stratified Split Report
+ fold  pK_mean   pK_std   pK_min   pK_max  sim_mean_max  sim_median_max  sim_max  sim_std_max  gt0.7  gt0.8  gt0.9  pct_gt0.7  pct_gt0.8  pct_gt0.9
+    1 6.893234 0.666817 6.054039 8.301030      0.829779        0.799956      1.0     0.121253      9      5      3       90.0       50.0       30.0
+    2 6.759555 0.883803 4.651695 7.698970      0.789657        0.769231      1.0     0.159098      7      4      3       70.0       40.0       30.0
+    3 6.728522 1.000899 4.548214 8.045757      0.913811        1.000000      1.0     0.137581      9      7      7       90.0       70.0       70.0
+    4 6.797577 0.793770 5.187087 7.795880      0.898647        1.000000      1.0     0.157622      8      7      7       80.0       70.0       70.0
+    5 6.788867 0.672217 5.660000 7.698970      0.676019        0.748693      1.0     0.321150      6      4      3       60.0       40.0       30.0
+
+  
+************************************************************
+Creating Training Sets for Protein:  HIF2A at threshold:  0.7000000000000001
+PDBBind: 8
+BindingNet: 70
+BindingDB: 0
+PDBbind data contains 8 rows
+BindingNet data contains 70 rows
+BindingDB data contains 0 rows
+Protein files found: 78
+Ligand files found: 78
+Total rows: 78
+Length of FEP data: 41
+Dropped 15 compounds with tanimoto >= 0.9
+Remaining compounds: 63
+Cluster K-Fold (K=5) on dataset of length 63
+Successfully fingerprinted 63 molecules
+Generated 42 clusters
+Fold sizes: [13, 13, 13, 12, 12]
+  Fold 1: train=50, val=13
+  Fold 2: train=50, val=13
+  Fold 3: train=50, val=13
+  Fold 4: train=51, val=12
+  Fold 5: train=51, val=12
+============================================================
+HIF2A_0.7 cluster Split Report
+ fold  pK_mean   pK_std   pK_min   pK_max  sim_mean_max  sim_median_max  sim_max  sim_std_max  gt0.7  gt0.8  gt0.9  pct_gt0.7  pct_gt0.8  pct_gt0.9
+    1 6.726121 0.484989 5.958607 7.420216      0.703898        0.706667 0.750000     0.037774      8      0      0  61.538462        0.0        0.0
+    2 6.769845 0.914215 4.651695 8.045757      0.664259        0.706667 0.792683     0.170006      9      0      0  69.230769        0.0        0.0
+    3 6.425878 0.802232 4.548214 7.410000      0.663703        0.740741 0.792683     0.191888      9      0      0  69.230769        0.0        0.0
+    4 6.837570 0.767253 5.187087 7.853872      0.680713        0.739936 0.785714     0.107021      7      0      0  58.333333        0.0        0.0
+    5 6.625270 0.884958 5.522879 8.301030      0.735658        0.747330 0.772727     0.034043     11      0      0  91.666667        0.0        0.0
+Random K-Fold (K=5) on dataset of length 63
+============================================================
+HIF2A_0.7 random Split Report
+ fold  pK_mean   pK_std   pK_min   pK_max  sim_mean_max  sim_median_max  sim_max  sim_std_max  gt0.7  gt0.8  gt0.9  pct_gt0.7  pct_gt0.8  pct_gt0.9
+    1 6.347614 1.087003 4.548214 8.301030      0.745458        0.722222      1.0     0.166091      8      4      3  61.538462  30.769231  23.076923
+    2 6.547135 0.848718 4.651695 7.510000      0.765829        0.807229      1.0     0.305263     10      7      6  76.923077  53.846154  46.153846
+    3 6.871115 0.672330 5.906929 7.795880      0.818805        0.755814      1.0     0.157221     10      6      5  76.923077  46.153846  38.461538
+    4 7.005994 0.429328 6.442493 7.853872      0.870277        0.903614      1.0     0.132363     10      7      6  83.333333  58.333333  50.000000
+    5 6.625825 0.543167 5.958607 8.045757      0.810835        0.739936      1.0     0.166735      9      5      5  75.000000  41.666667  41.666667
+Scaffold Split of 5-folds for dataset of length 63
+Generated 8 scaffolds
+============================================================
+HIF2A_0.7 scaffold Split Report
+ fold  pK_mean   pK_std   pK_min   pK_max  sim_mean_max  sim_median_max  sim_max  sim_std_max  gt0.7  gt0.8  gt0.9  pct_gt0.7  pct_gt0.8  pct_gt0.9
+    1 6.582163 0.668267 4.548214 7.552842      0.693578        0.670886 1.000000     0.112874      9      7      2  26.470588  20.588235   5.882353
+    2 6.220038 0.550525 5.221849 7.045757      0.707359        0.680000 1.000000     0.136264      5      2      2  38.461538  15.384615  15.384615
+    3 7.200782 1.073418 5.187087 8.301030      0.401165        0.401869 0.441176     0.023308      0      0      0   0.000000   0.000000   0.000000
+    4 7.633705 0.223186 7.309804 7.853872      0.362776        0.398058 0.441176     0.113574      0      0      0   0.000000   0.000000   0.000000
+    5 6.827500 0.790627 5.660000 7.410000      0.770325        1.000000 1.000000     0.397808      3      3      3  75.000000  75.000000  75.000000
+Stratified Split of 5-folds for dataset of length 63
+============================================================
+HIF2A_0.7 stratified Split Report
+ fold  pK_mean   pK_std   pK_min   pK_max  sim_mean_max  sim_median_max  sim_max  sim_std_max  gt0.7  gt0.8  gt0.9  pct_gt0.7  pct_gt0.8  pct_gt0.9
+    1 6.686030 0.661541 5.522879 7.853872      0.852600        1.000000      1.0     0.162440      9      7      7  69.230769  53.846154  53.846154
+    2 6.654912 0.813579 4.651695 7.698970      0.744270        0.755814      1.0     0.217567     10      4      3  76.923077  30.769231  23.076923
+    3 6.668545 0.783545 5.187087 7.795880      0.770445        0.807229      1.0     0.250285      8      7      5  61.538462  53.846154  38.461538
+    4 6.650719 1.011053 4.548214 8.301030      0.799135        0.769231      1.0     0.162765      9      5      4  75.000000  41.666667  33.333333
+    5 6.717174 0.682738 5.660000 8.045757      0.806121        0.750000      1.0     0.141700      8      4      4  66.666667  33.333333  33.333333
+
+  
+************************************************************
+Creating Training Sets for Protein:  HIF2A at threshold:  0.6000000000000001
+PDBBind: 12
+BindingNet: 70
+BindingDB: 0
+PDBbind data contains 12 rows
+BindingNet data contains 70 rows
+BindingDB data contains 0 rows
+Protein files found: 82
+Ligand files found: 82
+Total rows: 82
+Length of FEP data: 41
+Dropped 15 compounds with tanimoto >= 0.9
+Remaining compounds: 67
+Cluster K-Fold (K=5) on dataset of length 67
+Successfully fingerprinted 67 molecules
+Generated 46 clusters
+Fold sizes: [14, 14, 13, 13, 13]
+  Fold 1: train=53, val=14
+  Fold 2: train=53, val=14
+  Fold 3: train=54, val=13
+  Fold 4: train=54, val=13
+  Fold 5: train=54, val=13
+============================================================
+HIF2A_0.6 cluster Split Report
+ fold  pK_mean   pK_std   pK_min   pK_max  sim_mean_max  sim_median_max  sim_max  sim_std_max  gt0.7  gt0.8  gt0.9  pct_gt0.7  pct_gt0.8  pct_gt0.9
+    1 6.607827 0.642675 5.070000 7.420216      0.662777        0.706667 0.750000     0.152666      8      0      0  57.142857        0.0        0.0
+    2 6.558427 1.182058 3.810000 8.045757      0.627527        0.706667 0.792683     0.210662      9      0      0  64.285714        0.0        0.0
+    3 6.425878 0.802232 4.548214 7.410000      0.668762        0.740741 0.792683     0.176737      9      0      0  69.230769        0.0        0.0
+    4 6.750065 0.799478 5.187087 7.853872      0.632943        0.739130 0.785714     0.194824      7      0      0  53.846154        0.0        0.0
+    5 6.518711 0.930323 5.240000 8.301030      0.690608        0.741573 0.772727     0.159451     11      0      0  84.615385        0.0        0.0
+Random K-Fold (K=5) on dataset of length 67
+============================================================
+HIF2A_0.6 random Split Report
+ fold  pK_mean   pK_std   pK_min   pK_max  sim_mean_max  sim_median_max  sim_max  sim_std_max  gt0.7  gt0.8  gt0.9  pct_gt0.7  pct_gt0.8  pct_gt0.9
+    1 6.456131 1.086614 3.810000 8.301030      0.638339        0.736224      1.0     0.244961      9      1      1  64.285714   7.142857   7.142857
+    2 6.624943 0.836317 4.651695 7.698970      0.791028        0.788230      1.0     0.238981     11      7      6  78.571429  50.000000  42.857143
+    3 6.366989 0.965196 4.548214 8.045757      0.783881        0.740741      1.0     0.245344      9      6      6  69.230769  46.153846  46.153846
+    4 6.705121 0.821897 5.070000 7.795880      0.708527        0.769231      1.0     0.269990      9      4      3  69.230769  30.769231  23.076923
+    5 6.714275 0.649702 5.850781 7.853872      0.821647        0.807229      1.0     0.154685     10      7      5  76.923077  53.846154  38.461538
+Scaffold Split of 5-folds for dataset of length 67
+Generated 9 scaffolds
+============================================================
+HIF2A_0.6 scaffold Split Report
+ fold  pK_mean   pK_std   pK_min   pK_max  sim_mean_max  sim_median_max  sim_max  sim_std_max  gt0.7  gt0.8  gt0.9  pct_gt0.7  pct_gt0.8  pct_gt0.9
+    1 6.582163 0.668267 4.548214 7.552842      0.693578        0.670886 1.000000     0.112874      9      7      2  26.470588  20.588235   5.882353
+    2 6.220038 0.550525 5.221849 7.045757      0.707359        0.680000 1.000000     0.136264      5      2      2  38.461538  15.384615  15.384615
+    3 7.200782 1.073418 5.187087 8.301030      0.401165        0.401869 0.441176     0.023308      0      0      0   0.000000   0.000000   0.000000
+    4 7.274075 0.762129 5.660000 7.853872      0.544840        0.441176 1.000000     0.303450      2      2      2  28.571429  28.571429  28.571429
+    5 5.730000 1.356599 3.810000 7.410000      0.241380        0.104801 1.000000     0.340510      1      1      1  16.666667  16.666667  16.666667
+Stratified Split of 5-folds for dataset of length 67
+============================================================
+HIF2A_0.6 stratified Split Report
+ fold  pK_mean   pK_std   pK_min   pK_max  sim_mean_max  sim_median_max  sim_max  sim_std_max  gt0.7  gt0.8  gt0.9  pct_gt0.7  pct_gt0.8  pct_gt0.9
+    1 6.623997 0.764890 5.240000 7.853872      0.775815        0.870370      1.0     0.288304     11      7      7  78.571429  50.000000  50.000000
+    2 6.615159 0.835946 4.651695 7.795880      0.787736        0.773268      1.0     0.235351     12      5      5  85.714286  35.714286  35.714286
+    3 6.520892 0.760679 5.187087 7.698970      0.843743        0.830986      1.0     0.158881     10      7      6  76.923077  53.846154  46.153846
+    4 6.505011 1.153495 3.810000 8.301030      0.716011        0.741573      1.0     0.296558      8      6      5  61.538462  46.153846  38.461538
+    5 6.590240 0.926415 4.548214 8.045757      0.784538        0.739130      1.0     0.246003      9      6      6  69.230769  46.153846  46.153846
+
+  
+************************************************************
+Creating Training Sets for Protein:  HIF2A at threshold:  0.5000000000000001
+PDBBind: 31
+BindingNet: 70
+BindingDB: 0
+PDBbind data contains 31 rows
+BindingNet data contains 70 rows
+BindingDB data contains 0 rows
+Protein files found: 101
+Ligand files found: 101
+Total rows: 101
+Length of FEP data: 41
+Dropped 15 compounds with tanimoto >= 0.9
+Remaining compounds: 86
+Cluster K-Fold (K=5) on dataset of length 86
+Successfully fingerprinted 86 molecules
+Generated 61 clusters
+Fold sizes: [18, 17, 17, 17, 17]
+  Fold 1: train=68, val=18
+  Fold 2: train=69, val=17
+  Fold 3: train=69, val=17
+  Fold 4: train=69, val=17
+  Fold 5: train=69, val=17
+============================================================
+HIF2A_0.5 cluster Split Report
+ fold  pK_mean   pK_std   pK_min   pK_max  sim_mean_max  sim_median_max  sim_max  sim_std_max  gt0.7  gt0.8  gt0.9  pct_gt0.7  pct_gt0.8  pct_gt0.9
+    1 6.440542 1.203578 2.650000 8.045757      0.605598        0.675000 0.792683     0.187706      8      0      0  44.444444        0.0        0.0
+    2 6.580211 1.113413 4.651695 8.700000      0.621144        0.706667 0.797619     0.191639     10      0      0  58.823529        0.0        0.0
+    3 5.922953 1.157740 3.810000 7.698970      0.610955        0.705882 0.755814     0.184391      9      0      0  52.941176        0.0        0.0
+    4 6.426109 1.224793 3.730000 8.301030      0.609042        0.690141 0.797619     0.169717      8      0      0  47.058824        0.0        0.0
+    5 6.294744 1.102942 4.070000 7.700000      0.583880        0.705882 0.769231     0.181424      9      0      0  52.941176        0.0        0.0
+Random K-Fold (K=5) on dataset of length 86
+============================================================
+HIF2A_0.5 random Split Report
+ fold  pK_mean   pK_std   pK_min   pK_max  sim_mean_max  sim_median_max  sim_max  sim_std_max  gt0.7  gt0.8  gt0.9  pct_gt0.7  pct_gt0.8  pct_gt0.9
+    1 6.189573 1.340500 2.650000 7.698970      0.787212        0.783425      1.0     0.238609     14      8      8  77.777778  44.444444  44.444444
+    2 5.976890 0.784551 4.100000 7.045757      0.692994        0.739130      1.0     0.285676     10      6      5  58.823529  35.294118  29.411765
+    3 6.221848 1.334802 3.810000 8.301030      0.636963        0.739130      1.0     0.342549     10      6      6  58.823529  35.294118  35.294118
+    4 6.850000 0.999768 5.187087 8.700000      0.696836        0.654762      1.0     0.200320      8      7      3  47.058824  41.176471  17.647059
+    5 6.441010 1.153146 3.730000 7.853872      0.803235        1.000000      1.0     0.270252     13     10      9  76.470588  58.823529  52.941176
+Scaffold Split of 5-folds for dataset of length 86
+Generated 16 scaffolds
+============================================================
+HIF2A_0.5 scaffold Split Report
+ fold  pK_mean   pK_std   pK_min   pK_max  sim_mean_max  sim_median_max  sim_max  sim_std_max  gt0.7  gt0.8  gt0.9  pct_gt0.7  pct_gt0.8  pct_gt0.9
+    1 6.582163 0.668267 4.548214 7.552842      0.693578        0.670886 1.000000     0.112874      9      7      2  26.470588  20.588235   5.882353
+    2 5.063077 1.187304 3.730000 7.410000      0.152287        0.143750 0.228571     0.033675      0      0      0   0.000000   0.000000   0.000000
+    3 6.220038 0.550525 5.221849 7.045757      0.707359        0.680000 1.000000     0.136264      5      2      2  38.461538  15.384615  15.384615
+    4 6.618113 1.506662 2.650000 8.301030      0.486286        0.415094 1.000000     0.233027      2      2      2  15.384615  15.384615  15.384615
+    5 6.786810 1.418441 4.100000 8.700000      0.376675        0.398058 1.000000     0.225127      1      1      1   7.692308   7.692308   7.692308
+Stratified Split of 5-folds for dataset of length 86
+============================================================
+HIF2A_0.5 stratified Split Report
+ fold  pK_mean   pK_std  pK_min   pK_max  sim_mean_max  sim_median_max  sim_max  sim_std_max  gt0.7  gt0.8  gt0.9  pct_gt0.7  pct_gt0.8  pct_gt0.9
+    1 6.228798 1.482726    2.65 8.301030      0.675292        0.722506      1.0     0.268071     10      6      5  55.555556  33.333333  27.777778
+    2 6.296424 0.991956    3.81 7.700000      0.778074        0.740741      1.0     0.165824     12      6      5  70.588235  35.294118  29.411765
+    3 6.400440 1.238102    3.81 8.700000      0.752018        0.807229      1.0     0.283065     11      9      8  64.705882  52.941176  47.058824
+    4 6.322296 0.992825    4.10 7.698970      0.800111        0.814815      1.0     0.223771     14     10      7  82.352941  58.823529  41.176471
+    5 6.429055 1.111888    4.19 8.045757      0.702234        0.797619      1.0     0.307308     10      8      7  58.823529  47.058824  41.176471
+
+  
+************************************************************
+Creating Training Sets for Protein:  HIF2A at threshold:  0.40000000000000013
+PDBBind: 1144
+BindingNet: 1246
+BindingDB: 311
+PDBbind data contains 1144 rows
+BindingNet data contains 1246 rows
+BindingDB data contains 311 rows
+Protein files found: 2701
+Ligand files found: 2701
+Total rows: 2701
+Length of FEP data: 41
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6s1s/6s1s_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4u0x/4u0x_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6hvr/6hvr_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/3wax/3wax_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6hub/6hub_ligand.sdf)
+Dropped 15 compounds with tanimoto >= 0.9
+Remaining compounds: 2681
+Cluster K-Fold (K=5) on dataset of length 2681
+Successfully fingerprinted 2681 molecules
+Generated 1781 clusters
+Fold sizes: [537, 536, 536, 536, 536]
+  Fold 1: train=2144, val=537
+  Fold 2: train=2145, val=536
+  Fold 3: train=2145, val=536
+  Fold 4: train=2145, val=536
+  Fold 5: train=2145, val=536
+============================================================
+HIF2A_0.4 cluster Split Report
+ fold  pK_mean   pK_std   pK_min  pK_max  sim_mean_max  sim_median_max  sim_max  sim_std_max  gt0.7  gt0.8  gt0.9  pct_gt0.7  pct_gt0.8  pct_gt0.9
+    1 6.576791 1.857379 1.300000   15.22      0.617612        0.684932 0.880000     0.178611    241     18      0  44.878957   3.351955   0.000000
+    2 6.530550 1.698085 1.688246   11.32      0.604969        0.662041 0.851562     0.168039    216     11      0  40.298507   2.052239   0.000000
+    3 6.384137 1.643155 1.770000   14.00      0.611848        0.659412 0.907407     0.171216    210     19      1  39.179104   3.544776   0.186567
+    4 6.502672 1.604036 1.700000   11.33      0.621207        0.687500 0.874016     0.171023    237     23      0  44.216418   4.291045   0.000000
+    5 6.402105 1.652394 1.550000   11.00      0.624665        0.684783 0.907407     0.168704    248     22      1  46.268657   4.104478   0.186567
+Random K-Fold (K=5) on dataset of length 2681
+============================================================
+HIF2A_0.4 random Split Report
+ fold  pK_mean   pK_std   pK_min  pK_max  sim_mean_max  sim_median_max  sim_max  sim_std_max  gt0.7  gt0.8  gt0.9  pct_gt0.7  pct_gt0.8  pct_gt0.9
+    1 6.578937 1.714123 1.723308   15.22      0.727841        0.750000      1.0     0.239346    323    209    163  60.148976  38.919926  30.353818
+    2 6.468515 1.653354 1.990000   12.16      0.735635        0.758902      1.0     0.234386    326    225    165  60.820896  41.977612  30.783582
+    3 6.543862 1.696783 1.700000   13.00      0.734979        0.768875      1.0     0.238742    332    231    161  61.940299  43.097015  30.037313
+    4 6.248525 1.710234 1.300000   11.00      0.737468        0.770677      1.0     0.244249    334    243    177  62.313433  45.335821  33.022388
+    5 6.556412 1.678100 1.550000   14.00      0.755975        0.793560      1.0     0.242624    363    265    188  67.723881  49.440299  35.074627
+Scaffold Split of 5-folds for dataset of length 2681
+Generated 1066 scaffolds
+============================================================
+HIF2A_0.4 scaffold Split Report
+ fold  pK_mean   pK_std   pK_min  pK_max  sim_mean_max  sim_median_max  sim_max  sim_std_max  gt0.7  gt0.8  gt0.9  pct_gt0.7  pct_gt0.8  pct_gt0.9
+    1 6.240202 1.634354 1.300000   11.00      0.519850        0.484848      1.0     0.228601    145     69     29  27.001862  12.849162   5.400372
+    2 6.591977 1.956544 1.688246   15.22      0.585386        0.610228      1.0     0.202795    156     64     29  29.104478  11.940299   5.410448
+    3 6.476915 1.500188 1.770000   11.11      0.616368        0.648171      1.0     0.222674    204    106     51  38.059701  19.776119   9.514925
+    4 6.443335 1.645698 1.723308   11.32      0.562866        0.549835      1.0     0.186795    119     56     27  22.201493  10.447761   5.037313
+    5 6.644453 1.676027 1.550000   11.33      0.571557        0.588731      1.0     0.195568    154     41     23  28.731343   7.649254   4.291045
+Stratified Split of 5-folds for dataset of length 2681
+============================================================
+HIF2A_0.4 stratified Split Report
+ fold  pK_mean   pK_std  pK_min  pK_max  sim_mean_max  sim_median_max  sim_max  sim_std_max  gt0.7  gt0.8  gt0.9  pct_gt0.7  pct_gt0.8  pct_gt0.9
+    1 6.436391 1.725643    1.55   13.00      0.743428        0.771429      1.0     0.232314    337    237    170  62.756052  44.134078  31.657356
+    2 6.491943 1.686709    2.00   15.22      0.746077        0.770542      1.0     0.242254    343    237    185  63.992537  44.216418  34.514925
+    3 6.490669 1.634348    2.12   13.00      0.744312        0.764020      1.0     0.233351    333    238    173  62.126866  44.402985  32.276119
+    4 6.503419 1.699458    1.70   15.00      0.730887        0.764151      1.0     0.239429    327    219    157  61.007463  40.858209  29.291045
+    5 6.474095 1.726400    1.30   13.40      0.753423        0.785099      1.0     0.238803    352    255    186  65.671642  47.574627  34.701493
+
+  
+************************************************************
+Creating Training Sets for Protein:  HIF2A at threshold:  0.30000000000000016
+PDBBind: 16063
+BindingNet: 42084
+BindingDB: 7827
+PDBbind data contains 16063 rows
+BindingNet data contains 42084 rows
+BindingDB data contains 7827 rows
+Protein files found: 65974
+Ligand files found: 65974
+Total rows: 65974
+Length of FEP data: 41
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/1g42/1g42_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4wkt/4wkt_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6uhu/6uhu_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6pht/6pht_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/refined-set/1wc1/1wc1_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/2wfg/2wfg_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6q35/6q35_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6r1c/6r1c_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/3mmr/3mmr_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6ibs/6ibs_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4iu4/4iu4_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5fom/5fom_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/refined-set/6n95/6n95_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/3e6k/3e6k_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6jn5/6jn5_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6jn3/6jn3_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5o5m/5o5m_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5ot3/5ot3_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6ert/6ert_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6ibv/6ibv_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6q2y/6q2y_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4ob0/4ob0_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/3e9b/3e9b_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5agr/5agr_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6q30/6q30_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6j8q/6j8q_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5ll7/5ll7_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/1hq5/1hq5_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/3zju/3zju_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4wku/4wku_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6jn4/6jn4_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6s1s/6s1s_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5hj9/5hj9_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6npf/6npf_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6rw1/6rw1_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4iu0/4iu0_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6rvl/6rvl_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5mgi/5mgi_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5hja/5hja_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4ie3/4ie3_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6q92/6q92_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6j8r/6j8r_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6rvf/6rvf_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4u0x/4u0x_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/3zjv/3zjv_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4l6q/4l6q_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4ob2/4ob2_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6qw7/6qw7_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6q37/6q37_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6rvk/6rvk_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6hvr/6hvr_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5fqb/5fqb_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/1wva/1wva_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4ixv/4ixv_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6rtn/6rtn_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4wkv/4wkv_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/3e6v/3e6v_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/1d3v/1d3v_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/2eep/2eep_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5vrl/5vrl_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5agt/5agt_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6jn6/6jn6_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4i06/4i06_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4kai/4kai_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/refined-set/6gwe/6gwe_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4lv1/4lv1_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5ags/5ags_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6qaf/6qaf_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4kb7/4kb7_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4kbi/4kbi_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/1pq3/1pq3_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4no1/4no1_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4ixu/4ixu_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6q39/6q39_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/3wax/3wax_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6rmf/6rmf_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6hub/6hub_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5fqc/5fqc_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6e5b/6e5b_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/3eyd/3eyd_ligand.sdf)
+Dropped 15 compounds with tanimoto >= 0.9
+Remaining compounds: 65879
+Cluster K-Fold (K=5) on dataset of length 65879
+Successfully fingerprinted 65879 molecules
+Generated 41786 clusters
+Fold sizes: [13176, 13176, 13176, 13176, 13175]
+  Fold 1: train=52703, val=13176
+  Fold 2: train=52703, val=13176
+  Fold 3: train=52703, val=13176
+  Fold 4: train=52703, val=13176
+  Fold 5: train=52704, val=13175
+============================================================
+HIF2A_0.3 cluster Split Report
+ fold  pK_mean   pK_std   pK_min    pK_max  sim_mean_max  sim_median_max  sim_max  sim_std_max  gt0.7  gt0.8  gt0.9  pct_gt0.7  pct_gt0.8  pct_gt0.9
+    1 6.944928 1.617671 0.450000 13.770000      0.677830        0.719298 0.988506     0.126000   7553    432     12  57.323922   3.278689   0.091075
+    2 6.960786 1.601833 0.750000 13.481486      0.677773        0.718310 0.965217     0.124220   7525    470     25  57.111415   3.567092   0.189739
+    3 6.941232 1.609352 0.490000 14.000000      0.678880        0.717391 0.988506     0.123671   7494    500     34  56.876138   3.794778   0.258045
+    4 6.940528 1.588633 0.400000 15.000000      0.677083        0.717742 0.969925     0.125048   7407    482     29  56.215847   3.658166   0.220097
+    5 6.969433 1.631619 0.366532 15.220000      0.678480        0.718182 0.969925     0.124877   7550    479     25  57.305503   3.635674   0.189753
+Random K-Fold (K=5) on dataset of length 65879
+============================================================
+HIF2A_0.3 random Split Report
+ fold  pK_mean   pK_std   pK_min  pK_max  sim_mean_max  sim_median_max  sim_max  sim_std_max  gt0.7  gt0.8  gt0.9  pct_gt0.7  pct_gt0.8  pct_gt0.9
+    1 6.958282 1.608622 0.366532   13.82      0.797720        0.794393      1.0     0.180151   9820   6346   4403  74.529447  48.163327  33.416818
+    2 6.939478 1.621934 0.450000   15.00      0.796250        0.794872      1.0     0.181511   9785   6387   4370  74.263813  48.474499  33.166363
+    3 6.938574 1.609031 0.400000   14.00      0.796961        0.795699      1.0     0.180615   9852   6399   4331  74.772313  48.565574  32.870370
+    4 6.957443 1.609273 0.660000   15.00      0.797049        0.794872      1.0     0.180172   9770   6399   4367  74.149970  48.565574  33.143594
+    5 6.963130 1.600545 0.490000   15.22      0.799832        0.797980      1.0     0.180055   9879   6468   4453  74.982922  49.092979  33.798861
+Scaffold Split of 5-folds for dataset of length 65879
+Generated 22227 scaffolds
+============================================================
+HIF2A_0.3 scaffold Split Report
+ fold  pK_mean   pK_std   pK_min    pK_max  sim_mean_max  sim_median_max  sim_max  sim_std_max  gt0.7  gt0.8  gt0.9  pct_gt0.7  pct_gt0.8  pct_gt0.9
+    1 6.862019 1.677980 0.400000 14.390000      0.641476        0.663043      1.0     0.187517   5313   2235   1150  40.323315  16.962659   8.727990
+    2 6.981520 1.550046 0.450000 13.481486      0.673205        0.681818      1.0     0.173414   5921   2569   1411  44.937766  19.497571  10.708865
+    3 6.925184 1.596971 0.490000 15.000000      0.664466        0.677966      1.0     0.175060   5764   2355   1270  43.746205  17.873406   9.638737
+    4 6.950988 1.640558 0.602000 13.770000      0.673893        0.686747      1.0     0.174085   6098   2641   1325  46.281117  20.044019  10.056163
+    5 7.037201 1.575560 0.366532 15.220000      0.664126        0.674419      1.0     0.172225   5646   2376   1202  42.853890  18.034156   9.123340
+Stratified Split of 5-folds for dataset of length 65879
+============================================================
+HIF2A_0.3 stratified Split Report
+ fold  pK_mean   pK_std   pK_min    pK_max  sim_mean_max  sim_median_max  sim_max  sim_std_max  gt0.7  gt0.8  gt0.9  pct_gt0.7  pct_gt0.8  pct_gt0.9
+    1 6.949688 1.616460 0.450000 13.960000      0.798069        0.795699      1.0     0.181074   9832   6390   4442  74.620522  48.497268  33.712811
+    2 6.952674 1.618347 0.490000 15.220000      0.798503        0.796296      1.0     0.179513   9870   6390   4380  74.908925  48.497268  33.242259
+    3 6.953502 1.607190 0.602000 13.820000      0.799688        0.796610      1.0     0.179719   9861   6439   4448  74.840619  48.869156  33.758349
+    4 6.949666 1.611623 0.366532 15.000000      0.794995        0.794339      1.0     0.182221   9710   6351   4345  73.694596  48.201275  32.976624
+    5 6.951377 1.595920 0.400000 13.481486      0.799766        0.796748      1.0     0.178939   9900   6447   4420  75.142315  48.933586  33.548387
+
+  
+************************************************************
+Creating Training Sets for Protein:  HIF2A at threshold:  0.20000000000000018
+PDBBind: 19072
+BindingNet: 58854
+BindingDB: 8781
+PDBbind data contains 19072 rows
+BindingNet data contains 58854 rows
+BindingDB data contains 8781 rows
+Protein files found: 86707
+Ligand files found: 86707
+Total rows: 86707
+Length of FEP data: 41
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/1g42/1g42_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4wkt/4wkt_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6uhu/6uhu_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6pht/6pht_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/refined-set/1wc1/1wc1_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/2z3z/2z3z_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/2wfg/2wfg_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6q35/6q35_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6r1c/6r1c_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/3mmr/3mmr_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6ibs/6ibs_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4iu4/4iu4_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5fom/5fom_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/refined-set/6n95/6n95_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/3e6k/3e6k_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6jn5/6jn5_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6jn3/6jn3_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5o5m/5o5m_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5ot3/5ot3_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6ert/6ert_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6ibv/6ibv_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6q2y/6q2y_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4ob0/4ob0_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/3e9b/3e9b_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5agr/5agr_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6q30/6q30_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6j8q/6j8q_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5ll7/5ll7_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/1hq5/1hq5_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/3zju/3zju_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4wku/4wku_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6jn4/6jn4_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6skd/6skd_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6s1s/6s1s_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5hj9/5hj9_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6npf/6npf_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6rw1/6rw1_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4iu0/4iu0_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6rvl/6rvl_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5mgi/5mgi_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5hja/5hja_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4ie3/4ie3_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6q92/6q92_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6j8r/6j8r_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6rvf/6rvf_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4u0x/4u0x_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/3zjv/3zjv_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4l6q/4l6q_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4ob1/4ob1_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4ob2/4ob2_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6qw7/6qw7_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6q37/6q37_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6rvk/6rvk_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6hvr/6hvr_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5fqb/5fqb_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/1wva/1wva_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4ixv/4ixv_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6rtn/6rtn_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4wkv/4wkv_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/3e6v/3e6v_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/1d3v/1d3v_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/2eep/2eep_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6skc/6skc_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5vrl/5vrl_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5agt/5agt_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6jn6/6jn6_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4i06/4i06_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4kai/4kai_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/refined-set/6gwe/6gwe_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4lv1/4lv1_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5ags/5ags_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6qaf/6qaf_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4kb7/4kb7_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4kbi/4kbi_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/1pq3/1pq3_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4no1/4no1_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4ixu/4ixu_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6skb/6skb_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6q39/6q39_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/3wax/3wax_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6rmf/6rmf_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6hub/6hub_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5fqc/5fqc_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6e5b/6e5b_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/3eyd/3eyd_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6u7o/6u7o_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6u7p/6u7p_ligand.sdf)
+Dropped 15 compounds with tanimoto >= 0.9
+Remaining compounds: 86605
+Cluster K-Fold (K=5) on dataset of length 86605
+Successfully fingerprinted 86605 molecules
+Generated 54285 clusters
+Fold sizes: [17321, 17321, 17321, 17321, 17321]
+  Fold 1: train=69284, val=17321
+  Fold 2: train=69284, val=17321
+  Fold 3: train=69284, val=17321
+  Fold 4: train=69284, val=17321
+  Fold 5: train=69284, val=17321
+============================================================
+HIF2A_0.2 cluster Split Report
+ fold  pK_mean   pK_std   pK_min    pK_max  sim_mean_max  sim_median_max  sim_max  sim_std_max  gt0.7  gt0.8  gt0.9  pct_gt0.7  pct_gt0.8  pct_gt0.9
+    1 6.947846 1.585780 0.040959 15.000000      0.685171        0.721649 0.988506     0.117621  10176    636     22  58.749495   3.671843   0.127013
+    2 6.942873 1.560915 0.602000 14.390000      0.688127        0.725490 0.990991     0.117974  10376    727     34  59.904163   4.197217   0.196294
+    3 6.950495 1.564534 0.600000 15.220000      0.686832        0.722222 0.965517     0.117375  10238    671     26  59.107442   3.873910   0.150107
+    4 6.936594 1.586681 0.490000 12.720000      0.686559        0.720430 0.990991     0.116486  10126    692     45  58.460828   3.995150   0.259800
+    5 6.915176 1.573279 0.400000 13.481486      0.686100        0.722973 0.988506     0.118655  10325    713     39  59.609722   4.116391   0.225160
+Random K-Fold (K=5) on dataset of length 86605
+============================================================
+HIF2A_0.2 random Split Report
+ fold  pK_mean   pK_std   pK_min    pK_max  sim_mean_max  sim_median_max  sim_max  sim_std_max  gt0.7  gt0.8  gt0.9  pct_gt0.7  pct_gt0.8  pct_gt0.9
+    1 6.943675 1.567636 0.602000 13.481486      0.806572        0.800000      1.0     0.171285  13252   8594   5856  76.508285  49.616073  33.808672
+    2 6.928209 1.574224 0.366532 15.000000      0.808016        0.800000      1.0     0.170825  13341   8649   5911  77.022112  49.933607  34.126205
+    3 6.948437 1.575331 0.400000 15.220000      0.804567        0.798165      1.0     0.174284  13180   8538   5882  76.092604  49.292766  33.958778
+    4 6.948360 1.576985 0.820000 15.000000      0.806576        0.800000      1.0     0.173068  13267   8618   5887  76.594885  49.754633  33.987645
+    5 6.924303 1.577257 0.040959 13.820000      0.804558        0.798246      1.0     0.172990  13165   8549   5840  76.006004  49.356273  33.716298
+Scaffold Split of 5-folds for dataset of length 86605
+Generated 28993 scaffolds
+============================================================
+HIF2A_0.2 scaffold Split Report
+ fold  pK_mean   pK_std   pK_min    pK_max  sim_mean_max  sim_median_max  sim_max  sim_std_max  gt0.7  gt0.8  gt0.9  pct_gt0.7  pct_gt0.8  pct_gt0.9
+    1 6.882345 1.613468 0.400000 15.000000      0.657146        0.673684      1.0     0.181994   7360   3154   1628  42.491773  18.209110   9.398995
+    2 7.007912 1.523181 0.602000 13.770000      0.678869        0.684211      1.0     0.167773   7874   3396   1837  45.459269  19.606258  10.605623
+    3 6.923416 1.542886 0.490000 13.960000      0.675748        0.686747      1.0     0.168706   7923   3261   1704  45.742163  18.826858   9.837769
+    4 6.889140 1.608086 0.600000 15.220000      0.675810        0.688312      1.0     0.168603   8066   3431   1566  46.567750  19.808325   9.041048
+    5 6.990171 1.577778 0.040959 13.481486      0.679404        0.689655      1.0     0.164185   8074   3268   1653  46.613937  18.867271   9.543329
+Stratified Split of 5-folds for dataset of length 86605
+============================================================
+HIF2A_0.2 stratified Split Report
+ fold  pK_mean   pK_std   pK_min    pK_max  sim_mean_max  sim_median_max  sim_max  sim_std_max  gt0.7  gt0.8  gt0.9  pct_gt0.7  pct_gt0.8  pct_gt0.9
+    1 6.939640 1.570308 0.366532 14.390000      0.806314        0.800000      1.0     0.172063  13182   8640   5902  76.104151  49.881647  34.074245
+    2 6.938888 1.573088 0.400000 14.000000      0.806188        0.798319      1.0     0.171292  13225   8556   5833  76.352405  49.396686  33.675885
+    3 6.935212 1.573447 0.600000 13.481486      0.807597        0.801587      1.0     0.171514  13326   8667   5907  76.935512  50.037527  34.103112
+    4 6.939395 1.580531 0.490000 15.220000      0.806026        0.800000      1.0     0.172218  13248   8578   5852  76.485191  49.523700  33.785578
+    5 6.939848 1.574225 0.040959 15.000000      0.804502        0.797980      1.0     0.173381  13207   8498   5843  76.248484  49.061832  33.733618
+
+  
+************************************************************
+Creating Training Sets for Protein:  HIF2A at threshold:  0.1000000000000002
+PDBBind: 19305
+BindingNet: 67843
+BindingDB: 8793
+PDBbind data contains 19305 rows
+BindingNet data contains 67843 rows
+BindingDB data contains 8793 rows
+Protein files found: 95941
+Ligand files found: 95941
+Total rows: 95941
+Length of FEP data: 41
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/1g42/1g42_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4wkt/4wkt_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6uhu/6uhu_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6pht/6pht_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/refined-set/1wc1/1wc1_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/2z3z/2z3z_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/2wfg/2wfg_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6q35/6q35_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6r1c/6r1c_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/3mmr/3mmr_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6ibs/6ibs_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4iu4/4iu4_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5fom/5fom_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/refined-set/6n95/6n95_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/3e6k/3e6k_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6jn5/6jn5_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6jn3/6jn3_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5o5m/5o5m_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5ot3/5ot3_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6ert/6ert_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6ibv/6ibv_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6q2y/6q2y_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4ob0/4ob0_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/3e9b/3e9b_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5agr/5agr_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6q30/6q30_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6j8q/6j8q_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5ll7/5ll7_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/1hq5/1hq5_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/3zju/3zju_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4wku/4wku_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6jn4/6jn4_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6skd/6skd_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6s1s/6s1s_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5hj9/5hj9_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6npf/6npf_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6rw1/6rw1_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4iu0/4iu0_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6rvl/6rvl_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5mgi/5mgi_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5hja/5hja_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4ie3/4ie3_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6q92/6q92_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6j8r/6j8r_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6rvf/6rvf_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4u0x/4u0x_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/3zjv/3zjv_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4l6q/4l6q_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4ob1/4ob1_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4ob2/4ob2_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6qw7/6qw7_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6q37/6q37_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6rvk/6rvk_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6hvr/6hvr_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5fqb/5fqb_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/1wva/1wva_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4ixv/4ixv_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6rtn/6rtn_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4wkv/4wkv_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/3e6v/3e6v_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/1d3v/1d3v_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/2eep/2eep_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6skc/6skc_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5vrl/5vrl_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5agt/5agt_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6jn6/6jn6_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4i06/4i06_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4kai/4kai_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/refined-set/6gwe/6gwe_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4lv1/4lv1_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5ags/5ags_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6qaf/6qaf_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4kb7/4kb7_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4kbi/4kbi_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/1pq3/1pq3_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4no1/4no1_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4ixu/4ixu_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6skb/6skb_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6q39/6q39_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/3wax/3wax_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6rmf/6rmf_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6hub/6hub_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5fqc/5fqc_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6e5b/6e5b_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/3eyd/3eyd_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6u7o/6u7o_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6u7p/6u7p_ligand.sdf)
+Dropped 15 compounds with tanimoto >= 0.9
+Remaining compounds: 95839
+Cluster K-Fold (K=5) on dataset of length 95839
+Successfully fingerprinted 95839 molecules
+Generated 59760 clusters
+Fold sizes: [19168, 19168, 19168, 19168, 19167]
+  Fold 1: train=76671, val=19168
+  Fold 2: train=76671, val=19168
+  Fold 3: train=76671, val=19168
+  Fold 4: train=76671, val=19168
+  Fold 5: train=76672, val=19167
+============================================================
+HIF2A_0.1 cluster Split Report
+ fold  pK_mean   pK_std   pK_min  pK_max  sim_mean_max  sim_median_max  sim_max  sim_std_max  gt0.7  gt0.8  gt0.9  pct_gt0.7  pct_gt0.8  pct_gt0.9
+    1 6.973996 1.570388 0.450000   12.72      0.690744        0.726027 0.959596     0.114446  11633    731     26  60.689691   3.813648   0.135643
+    2 6.962685 1.545202 0.366532   15.00      0.691127        0.726190 0.988506     0.114372  11647    813     42  60.762730   4.241444   0.219115
+    3 6.940392 1.559605 0.180000   14.39      0.691925        0.726027 0.988095     0.113954  11671    883     47  60.887938   4.606636   0.245200
+    4 6.956043 1.564731 0.207608   13.96      0.690361        0.724409 0.985294     0.114666  11584    777     45  60.434057   4.053631   0.234766
+    5 6.962126 1.552715 0.040959   15.22      0.691937        0.725664 0.988506     0.112337  11580    794     47  60.416341   4.142537   0.245213
+Random K-Fold (K=5) on dataset of length 95839
+============================================================
+HIF2A_0.1 random Split Report
+ fold  pK_mean   pK_std   pK_min    pK_max  sim_mean_max  sim_median_max  sim_max  sim_std_max  gt0.7  gt0.8  gt0.9  pct_gt0.7  pct_gt0.8  pct_gt0.9
+    1 6.960370 1.554455 0.180000 15.000000      0.810065        0.801587      1.0     0.166957  14858   9596   6457  77.514608  50.062604  33.686352
+    2 6.957260 1.560348 0.207608 15.220000      0.808916        0.801802      1.0     0.168374  14828   9607   6446  77.358097  50.119992  33.628965
+    3 6.964816 1.572309 0.040959 13.770000      0.808913        0.800000      1.0     0.167779  14845   9572   6441  77.446786  49.937396  33.602880
+    4 6.969361 1.550865 0.450000 14.000000      0.808681        0.801499      1.0     0.168435  14805   9589   6463  77.238105  50.026085  33.717654
+    5 6.943434 1.554768 0.490000 13.481486      0.810372        0.801802      1.0     0.168094  14851   9617   6570  77.482131  50.174780  34.277665
+Scaffold Split of 5-folds for dataset of length 95839
+Generated 31717 scaffolds
+============================================================
+HIF2A_0.1 scaffold Split Report
+ fold  pK_mean   pK_std   pK_min    pK_max  sim_mean_max  sim_median_max  sim_max  sim_std_max  gt0.7  gt0.8  gt0.9  pct_gt0.7  pct_gt0.8  pct_gt0.9
+    1 6.881937 1.586180 0.400000 15.000000      0.662277        0.679245      1.0     0.178928   8485   3609   1795  44.266486  18.828255   9.364566
+    2 6.994708 1.510281 0.778100 13.770000      0.688510        0.693694      1.0     0.162453   9204   4002   2003  48.017529  20.878548  10.449708
+    3 6.926140 1.589511 0.180000 13.960000      0.681574        0.693694      1.0     0.167827   9168   3692   1945  47.829716  19.261269  10.147120
+    4 6.959707 1.574064 0.660000 15.220000      0.684901        0.689655      1.0     0.164116   8991   3965   1932  46.906302  20.685518  10.079299
+    5 7.032753 1.526817 0.040959 13.481486      0.684522        0.694915      1.0     0.163056   9208   3694   1866  48.040904  19.272708   9.735483
+Stratified Split of 5-folds for dataset of length 95839
+============================================================
+HIF2A_0.1 stratified Split Report
+ fold  pK_mean   pK_std   pK_min    pK_max  sim_mean_max  sim_median_max  sim_max  sim_std_max  gt0.7  gt0.8  gt0.9  pct_gt0.7  pct_gt0.8  pct_gt0.9
+    1 6.962096 1.555982 0.180000 13.770000      0.810181        0.801887      1.0     0.167443  14860   9616   6499  77.525042  50.166945  33.905467
+    2 6.958460 1.558059 0.400000 13.481486      0.809041        0.800000      1.0     0.166878  14799   9501   6418  77.206803  49.566987  33.482888
+    3 6.952313 1.554467 0.820000 13.481486      0.809651        0.801802      1.0     0.167834  14827   9625   6499  77.352880  50.213898  33.905467
+    4 6.965582 1.558640 0.602000 15.000000      0.809506        0.800000      1.0     0.167032  14839   9568   6444  77.415484  49.916528  33.618531
+    5 6.956791 1.565756 0.040959 15.220000      0.810261        0.801802      1.0     0.167421  14911   9615   6507  77.795169  50.164345  33.948975
+
+  
+************************************************************
+Creating Training Sets for Protein:  HIF2A at threshold:  2.220446049250313e-16
+PDBBind: 19308
+BindingNet: 69687
+BindingDB: 8822
+PDBbind data contains 19308 rows
+BindingNet data contains 69687 rows
+BindingDB data contains 8822 rows
+Protein files found: 97817
+Ligand files found: 97817
+Total rows: 97817
+Length of FEP data: 41
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/1g42/1g42_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4wkt/4wkt_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6uhu/6uhu_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6pht/6pht_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/refined-set/1wc1/1wc1_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/2z3z/2z3z_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/2wfg/2wfg_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6q35/6q35_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6r1c/6r1c_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/3mmr/3mmr_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6ibs/6ibs_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4iu4/4iu4_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5fom/5fom_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/refined-set/6n95/6n95_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/3e6k/3e6k_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6jn5/6jn5_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6jn3/6jn3_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5o5m/5o5m_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5ot3/5ot3_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6ert/6ert_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6ibv/6ibv_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6q2y/6q2y_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4ob0/4ob0_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/3e9b/3e9b_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5agr/5agr_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6q30/6q30_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6j8q/6j8q_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5ll7/5ll7_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/1hq5/1hq5_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/3zju/3zju_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4wku/4wku_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6jn4/6jn4_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6skd/6skd_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6s1s/6s1s_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5hj9/5hj9_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6npf/6npf_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6rw1/6rw1_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4iu0/4iu0_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6rvl/6rvl_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5mgi/5mgi_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5hja/5hja_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4ie3/4ie3_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6q92/6q92_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6j8r/6j8r_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6rvf/6rvf_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4u0x/4u0x_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/3zjv/3zjv_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4l6q/4l6q_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4ob1/4ob1_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4ob2/4ob2_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6qw7/6qw7_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6q37/6q37_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6rvk/6rvk_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6hvr/6hvr_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5fqb/5fqb_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/1wva/1wva_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4ixv/4ixv_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6rtn/6rtn_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4wkv/4wkv_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/3e6v/3e6v_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/1d3v/1d3v_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/2eep/2eep_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6skc/6skc_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5vrl/5vrl_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5agt/5agt_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6jn6/6jn6_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4i06/4i06_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4kai/4kai_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/refined-set/6gwe/6gwe_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4lv1/4lv1_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5ags/5ags_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6qaf/6qaf_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4kb7/4kb7_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4kbi/4kbi_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/1pq3/1pq3_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4no1/4no1_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/4ixu/4ixu_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6skb/6skb_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6q39/6q39_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/3wax/3wax_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6rmf/6rmf_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6hub/6hub_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/5fqc/5fqc_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6e5b/6e5b_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/3eyd/3eyd_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6u7o/6u7o_ligand.sdf)
+[WARN] Failed to process ligand for (/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/raw/pdbbind/general-set/6u7p/6u7p_ligand.sdf)
+Dropped 15 compounds with tanimoto >= 0.9
+Remaining compounds: 97715
+Cluster K-Fold (K=5) on dataset of length 97715
+Successfully fingerprinted 97715 molecules
+Generated 60834 clusters
+Fold sizes: [19543, 19543, 19543, 19543, 19543]
+  Fold 1: train=78172, val=19543
+  Fold 2: train=78172, val=19543
+  Fold 3: train=78172, val=19543
+  Fold 4: train=78172, val=19543
+  Fold 5: train=78172, val=19543
+============================================================
+HIF2A_0.0 cluster Split Report
+ fold  pK_mean   pK_std   pK_min  pK_max  sim_mean_max  sim_median_max  sim_max  sim_std_max  gt0.7  gt0.8  gt0.9  pct_gt0.7  pct_gt0.8  pct_gt0.9
+    1 6.958743 1.560933 0.180000   13.82      0.692123        0.726415 0.988506     0.113413  11962    776     36  61.208617   3.970731   0.184209
+    2 6.992099 1.539485 0.366532   13.00      0.691042        0.725000 0.969925     0.113980  11840    856     28  60.584352   4.380085   0.143274
+    3 6.958203 1.548828 0.207608   12.70      0.693641        0.726667 0.990991     0.112615  11998    829     32  61.392826   4.241928   0.163741
+    4 6.947922 1.576295 0.040959   15.22      0.692023        0.725664 0.990991     0.113254  11858    904     57  60.676457   4.625697   0.291665
+    5 6.959575 1.547571 0.400000   14.39      0.692327        0.725490 0.988506     0.112204  11899    840     53  60.886251   4.298214   0.271197
+Random K-Fold (K=5) on dataset of length 97715
+============================================================
+HIF2A_0.0 random Split Report
+ fold  pK_mean   pK_std   pK_min  pK_max  sim_mean_max  sim_median_max  sim_max  sim_std_max  gt0.7  gt0.8  gt0.9  pct_gt0.7  pct_gt0.8  pct_gt0.9
+    1 6.950901 1.548901 0.820000   14.00      0.809599        0.800000      1.0     0.166818  15183   9733   6566  77.690222  49.802999  33.597708
+    2 6.958108 1.553882 0.600000   14.39      0.809658        0.801724      1.0     0.167088  15125   9784   6608  77.393440  50.063962  33.812618
+    3 6.965955 1.558415 0.180000   15.22      0.811703        0.802083      1.0     0.166070  15249   9831   6666  78.027938  50.304457  34.109400
+    4 6.986306 1.544525 0.450000   15.00      0.810197        0.801980      1.0     0.167946  15185   9830   6655  77.700455  50.299340  34.053114
+    5 6.955272 1.567661 0.040959   15.00      0.811823        0.801980      1.0     0.166316  15215   9816   6683  77.853963  50.227703  34.196387
+Scaffold Split of 5-folds for dataset of length 97715
+Generated 32260 scaffolds
+============================================================
+HIF2A_0.0 scaffold Split Report
+ fold  pK_mean   pK_std   pK_min    pK_max  sim_mean_max  sim_median_max  sim_max  sim_std_max  gt0.7  gt0.8  gt0.9  pct_gt0.7  pct_gt0.8  pct_gt0.9
+    1 6.879512 1.593471 0.400000 13.770000      0.667969        0.684211      1.0     0.176924   8833   3726   1800  45.197769  19.065650   9.210459
+    2 6.975084 1.515402 0.207608 13.960000      0.687185        0.691729      1.0     0.160736   9251   3856   2006  47.336642  19.730850  10.264545
+    3 6.949946 1.575804 0.366532 15.220000      0.678600        0.687500      1.0     0.169481   9028   3899   1978  46.195569  19.950878  10.121271
+    4 6.979602 1.555025 0.450000 12.390000      0.681204        0.693694      1.0     0.166834   9352   3891   1843  47.853451  19.909942   9.430487
+    5 7.032399 1.528715 0.040959 13.481486      0.679950        0.689320      1.0     0.160957   9070   3613   1824  46.410479  18.487438   9.333265
+Stratified Split of 5-folds for dataset of length 97715
+============================================================
+HIF2A_0.0 stratified Split Report
+ fold  pK_mean   pK_std   pK_min    pK_max  sim_mean_max  sim_median_max  sim_max  sim_std_max  gt0.7  gt0.8  gt0.9  pct_gt0.7  pct_gt0.8  pct_gt0.9
+    1 6.971672 1.551916 0.040959 15.220000      0.810086        0.801887      1.0     0.166446  15117   9809   6574  77.352505  50.191885  33.638643
+    2 6.959945 1.557278 0.207608 13.820000      0.810708        0.801724      1.0     0.166213  15194   9795   6599  77.746508  50.120248  33.766566
+    3 6.956531 1.565199 0.180000 13.481486      0.809259        0.800000      1.0     0.167462  15151   9715   6578  77.526480  49.710894  33.659111
+    4 6.964269 1.549305 0.400000 15.000000      0.811789        0.802469      1.0     0.167319  15211   9867   6745  77.833495  50.488666  34.513637
+    5 6.964126 1.549942 0.450000 15.000000      0.811073        0.802326      1.0     0.166633  15222   9854   6626  77.889782  50.422146  33.904723
+Finished at Wed 10 Jun 06:02:18 BST 2026
+
+====================================
+CPU Time used: 14:16:40
+CPU Percent: 99%
+Memory usage: 414135400kb
+Approx Power usage: 0.17120000000000002
+Walltime usage: 19:45:05
+
+====================================

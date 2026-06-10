@@ -1,0 +1,29 @@
+name: aev-plig
+channels:
+  - bioconda
+  - conda-forge
+dependencies:
+  - _openmp_mutex=5.1=1_gnu
+  - sqlite=3.45.3=h5eee18b_0
+  - wheel=0.43.0=py38h06a4308_0
+  - torchvision=0.19.0
+  - torchaudio=2.4.0
+  - pytorch=2.4.0
+  - readline=8.2=h5eee18b_0
+  - python=3.8.19=h955ad1f_0
+  - _libgcc_mutex=0.1=main
+  - tk=8.6.14=h39e8969_0
+  - setuptools=69.5.1=py38h06a4308_0
+  - libgomp=11.2.0=h1234567_1
+  - zlib=1.2.13=h5eee18b_1
+  - ca-certificates=2024.7.2=h06a4308_0
+  - pip=24.0=py38h06a4308_0
+  - libffi=3.4.4=h6a678d5_1
+  - libstdcxx-ng=11.2.0=h1234567_1
+  - pytorch-cuda=12.1
+  - xz=5.4.6=h5eee18b_1
+  - openssl=3.0.14=h5eee18b_0
+  - ld_impl_linux-64=2.38=h1181459_1
+  - ncurses=6.4=h6a678d5_0
+  - libgcc-ng=11.2.0=h1234567_1
+prefix: /rds/general/user/cr725/home/miniforge3/envs/aev-plig
