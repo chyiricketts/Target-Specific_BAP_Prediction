@@ -1,0 +1,13 @@
+{
+  "exp_name": "AEV-PLIG_example",
+  "model": "GATv2Net",
+  "batch_size": 128,
+  "epochs": 200,
+  "hidden_dim": 32,
+  "head": 1,
+  "lr": 0.00012291937615434127,
+  "activation_function": "leaky_relu",
+  "gnn_layers": 1,
+  "weight_decay": 0,
+  "patience": 200
+}

@@ -13,7 +13,7 @@ from scipy.stats import pearsonr
 import numpy as np
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
-from helper.logger import ExperimentLogger
+#from helper.logger import ExperimentLogger
 from sklearn.model_selection import cross_val_score
 import optuna
 from optuna.visualization.matplotlib import plot_optimization_history
@@ -24,8 +24,38 @@ from optuna.visualization.matplotlib import plot_param_importances
 from optuna.visualization.matplotlib import plot_slice
 import matplotlib.pyplot as plt
 import random
+from pathlib import Path
 
-BASE_DIR = "/rds/general/user/cr725/home/aev-plig_research"
+class ExperimentLogger:
+    def __init__(self, exp_dir):
+        self.exp_dir = exp_dir
+        self.json_dir = os.path.join(exp_dir, "json")
+        os.makedirs(self.json_dir, exist_ok=True)
+
+    def _convert(self, obj):
+        import numpy as np
+
+        if isinstance(obj, (np.floating, np.float32, np.float64)):
+            return float(obj)
+
+        if isinstance(obj, (np.integer, np.int32, np.int64)):
+            return int(obj)
+
+        if isinstance(obj, dict):
+            return {k: self._convert(v) for k, v in obj.items()}
+
+        if isinstance(obj, list):
+            return [self._convert(v) for v in obj]
+
+        return obj
+
+    def save_json(self, name, obj):
+        path = os.path.join(self.json_dir, f"{name}.json")
+        with open(path, "w") as f:
+            json.dump(self._convert(obj), f, indent=2)
+
+BASE_DIR = Path.cwd().parents[1]
+
 
 def get_model(name, params):
     if name == "xgb":
@@ -73,7 +103,7 @@ def evaluate(model, X, y, split_name):
 # getting the train and valid data per fold
 def load_fold(exp_name, fold_idx):
 
-    processed_dir = os.path.join(BASE_DIR, "ts_other-models_CV", "experiments", exp_name, "processed")
+    processed_dir = os.path.join(BASE_DIR, "scripts", exp_name, "processed")
     train_df = pd.read_csv(os.path.join(processed_dir,  f"train_{fold_idx}_processed.csv"))
     valid_df = pd.read_csv(os.path.join(processed_dir,  f"valid_{fold_idx}_processed.csv"))
 
@@ -121,7 +151,7 @@ def cross_validate(exp_name, model_name, params, logger, feature_type):
         metrics, model = train_single_fold(model_name, params, train_df, valid_df, feature_type)
         fold_metrics.append(metrics)
 
-        model_outpath = os.path.join(BASE_DIR, "ts_other-models_CV", "experiments", exp_name, "models_cv")
+        model_outpath = os.path.join(BASE_DIR, "scripts", exp_name, "models_cv")
         os.makedirs(model_outpath, exist_ok=True)
 
         if model_name == "xgb":
@@ -258,7 +288,7 @@ if __name__ == "__main__":
     print("Training Model")
     args = parse_args()
 
-    exp_dir = os.path.join(BASE_DIR, "ts_other-models_CV", "experiments", args.exp_name)
+    exp_dir = os.path.join(BASE_DIR, "scripts", args.exp_name)
     logger = ExperimentLogger(exp_dir)
     os.makedirs(os.path.join(exp_dir, "models_cv"), exist_ok=True)
     os.makedirs(os.path.join(exp_dir, "models_seeded"), exist_ok=True)
@@ -266,7 +296,7 @@ if __name__ == "__main__":
     study = optuna.create_study(direction="maximize")
     study.optimize(
         lambda trial: objective(trial, args.model, args.exp_name, args.feature_type),
-        n_trials=50
+        n_trials=30
     )
     logger.save_json("train_best_params", study.best_params)
 

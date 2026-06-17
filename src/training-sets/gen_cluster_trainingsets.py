@@ -661,7 +661,7 @@ if __name__ == "__main__":
     }
 
     proteins = {
-        "PFKFB3": "pfkfb3_automap"
+        "MCL1": "mcl1_extra_flips"
     }
 
     for protein, protein_fullname in proteins.items():
@@ -696,7 +696,7 @@ if __name__ == "__main__":
         stratified_splits, startified_folds_idx = stratified_kfold_split(protein, df)
         report_stratified = generate_split_report("stratified", protein, stratified_splits, startified_folds_idx, df, fps)
 
-        for threshold in np.arange(0.5, -0.1, -0.1): # change the thresholds starting pattern
+        for threshold in np.arange(0.3, 0.2, -0.1): # change the thresholds starting pattern
 
             print("\n  \n" + "*" * 60)
             print("Creating Training Sets for Protein: ", protein, "at threshold: ", threshold)

@@ -1,0 +1,10 @@
+Loaded 266 graphs
+Split sizes:
+Train: 212
+Valid: 54
+Preparing train.pt...
+processed paths:
+/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/scripts/AEV-PLIG_example/processed/train.pt
+Preparing valid.pt...
+processed paths:
+/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/scripts/AEV-PLIG_example/processed/valid.pt

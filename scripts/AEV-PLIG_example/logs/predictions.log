@@ -1,0 +1,9 @@
+Make predictions
+
+Predictions from model ensemble:  20260617-144905_model_GATv2Net_AEV-PLIG_example
+Traceback (most recent call last):
+  File "../../src/models/AEV-PLIG-models/fep_predictions.py", line 151, in <module>
+    make_predictions(config)
+  File "../../src/models/AEV-PLIG-models/fep_predictions.py", line 64, in make_predictions
+    with open(os.path.join(BASE_DIR, "data/processed", "fep_graphs.pickle"), "rb") as handle:
+FileNotFoundError: [Errno 2] No such file or directory: '/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/data/processed/fep_graphs.pickle'

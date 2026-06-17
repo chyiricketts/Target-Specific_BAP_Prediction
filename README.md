@@ -1,7 +1,6 @@
 # Target-Specific BAP Predictions
-## Chyi Ricketts
-### In collaboration with the Ballester Lab at Imperial College London
-### MRes in Cancer Informatics
+### Chyi Ricketts, MRes in Cancer Informatics
+In collaboration with the Ballester Lab at Imperial College London
 
 ## Creating Environment
 Three Enviornments within configs: conda env create --file __.yml
@@ -11,8 +10,9 @@ Three Enviornments within configs: conda env create --file __.yml
 
 ## Downloading Raw Data
 1. PDBbindv2020:
-   - wget http://pdbbind-plus.org.cn/download/PDBbind_v2020_other_PL.tar.gz (potentially have to log in through their website)
-   - wget http://pdbbind-plus.org.cn/download/PDBbind_v2020_refined.tar.gz (potentially have to log in through their website)
+   - wget http://pdbbind-plus.org.cn/download/PDBbind_v2020_other_PL.tar.gz 
+   - wget http://pdbbind-plus.org.cn/download/PDBbind_v2020_refined.tar.gz
+      - Due to data security, one must log in manually through their website: http://pdbbind-plus.org.cn
    - Ensure it is placed within data/raw/pdbbind/general-set/ and data/raw/pdbbind/refined-set, respectively
 
 2. BindingNet:
@@ -22,7 +22,6 @@ Three Enviornments within configs: conda env create --file __.yml
 3. BindingDB-DCS:
    - wget https://www.bindingdb.org/rwd/data/surflex/surflex.tar
    - wget https://www.bindingdb.org/rwd/bind/downloads/BindingDB_All_202606_tsv.zip
-   - tar -xvzf data/raw/surflex.tar -C data/raw/bindingdb/
    - Ensure it is placed within data/raw/bindingdb
 
 ## Preparation
@@ -43,19 +42,67 @@ This script is computationally heavy to run as it goes through several steps to 
 4. Creates a report for each data split to analyze the distribution and similarity of the train/valid sets
 
 e.g. 
+
 ../data/training_sets/MCL1
+
 ├── cluster-split
+
 │   ├── MCL1_0.1_cluster_fold-1_train.csv
+
 ├── scaffold-split
+
 ├── random-split
+
 ├── stratified-split
+
 └── ts-MCL1.csv
 
 
 ## Target-Specific AEV-PLIG
 
+Preparation
+- Run scripts/run_fep_graphs.sh for FEP Test set graph generation required for evaluation: 
+   - src/models/AEV-PLIG-models/fep_graphs.py
+- Outputs: 
+   - data/processed/fep_graphs.pickle
 
-## Other Models: Tree-based and Regression Learning Algorithms
+AEV-PLIG and GATv2
+- See scripts/run_AEV-PLIG_template.sh for more detailed information
+- For an individual model, run scripts/AEV-PLIG_example/run_aev-plig.sh
+   - src/models/AEV-PLIG-models/generate_graphs.py
+   - src/models/AEV-PLIG-models/create_pytorch_data.py
+   - src/models/AEV-PLIG-models/train.py
+   - src/models/AEV-PLIG-models/fep_predictions.py
+- Outputs within AEV-PLIG_example/
+   - 
 
-Using ECIF and PLEC Features
-- Run scripts/run_plec-ecif_features.sh to create plec_features.csv and ecif_features.csv in raw_data
+
+## Tree-based and Regression Learning Algorithms using Fingerprint Features
+
+Preparation
+- Run scripts/run_plec-ecif_features.sh for ECIF and PLEC feature generation
+   - src/models/tree-regression-models/plec_features.py
+   - src/models/tree-regression-models/ecif_features.py
+- Outputs: 
+   - data/processed/raw_all_ecif_features.csv
+   - data/processed/fep_ecif_features.csv   
+   - data/processed/raw_all_plec_features.csv
+   - data/processed/fep_plec_features.csv
+
+Tree-based and Regression Learning Algorithms
+- See scripts/run_tree-regression_template.sh for more detailed information
+- For an individual model, run scripts/tree-regression_example/run_tree-regression.sh
+   - src/models/tree-regression-models/merge_dataset.py
+   - src/models/tree-regression-models/train_models.py
+   - src/models/tree-regression-models/eval_script.py
+- Outputs within tree-regression_example/: 
+   - models_cv/ containing 5 models trained on each fold
+   - models_seeded/ containing 10 models trained on different random seeds
+   - json/ containing data-config.json, train_best_params.json, xgb_cv_summary.json
+   - figures/ containing 3 plots for optuna optimization visualization
+   - tree-regression_example_cv_predictions.csv
+   - tree-regression_example_seeded_predictions.csv
+
+
+## Final Models
+IN PROGRESS. The best target-specific model will be placed here for reproducibility. This model still needs to be determined as this project is ongoing. 

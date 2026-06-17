@@ -5,9 +5,38 @@ import os
 import numpy as np
 import argparse
 import json
-from utils import ExperimentLogger
+from pathlib import Path
+#from utils import ExperimentLogger
 
-BASE_DIR = Path.cwd().parents[0]
+class ExperimentLogger:
+    def __init__(self, exp_dir):
+        self.exp_dir = exp_dir
+        self.json_dir = os.path.join(exp_dir, "json")
+        os.makedirs(self.json_dir, exist_ok=True)
+
+    def _convert(self, obj):
+        import numpy as np
+
+        if isinstance(obj, (np.floating, np.float32, np.float64)):
+            return float(obj)
+
+        if isinstance(obj, (np.integer, np.int32, np.int64)):
+            return int(obj)
+
+        if isinstance(obj, dict):
+            return {k: self._convert(v) for k, v in obj.items()}
+
+        if isinstance(obj, list):
+            return [self._convert(v) for v in obj]
+
+        return obj
+
+    def save_json(self, name, obj):
+        path = os.path.join(self.json_dir, f"{name}.json")
+        with open(path, "w") as f:
+            json.dump(self._convert(obj), f, indent=2)
+
+BASE_DIR = Path.cwd().parents[1]
 
 def parse_args():
     parser = argparse.ArgumentParser()
@@ -50,25 +79,22 @@ if __name__ == "__main__":
     print("Merging Datasets")
     args = parse_args()
 
-    # exp_dir = os.path.join(BASE_DIR, "data", "training_sets", args.exp_name)
-    # logger = ExperimentLogger(exp_dir)
-    # logger.save_json("data-config", vars(args))
+    exp_dir = os.path.join(BASE_DIR, "scripts", args.exp_name)
+    logger = ExperimentLogger(exp_dir)
+    logger.save_json("data-config", vars(args))
 
     if args.features == "ECIF": 
-        feature_df = pd.read_csv(os.path.join(BASE_DIR, data/processed/raw_all_ecif_features.csv))
+        feature_df = pd.read_csv(os.path.join(BASE_DIR, "data/processed/raw_all_ecif_features.csv"))
     elif args.features == "PLEC": 
-        feature_df = pd.read_csv(os.path.join(BASE_DIR, data/processed/raw_all_plec_features.csv))
+        feature_df = pd.read_csv(os.path.join(BASE_DIR, "data/processed/raw_all_plec_features.csv"))
     
-    #data_dir = os.path.join(exp_dir, "data")
-    save_dir = os.path.join(BASE_DIR, "outputs", args.exp_name)
+    save_dir = os.path.join(exp_dir, "processed")
     os.makedirs(save_dir, exist_ok=True)
     
     for fold_idx in range(1, 6): # 5-fold splits
         
-        #train_df = os.path.join(data_dir, f"{args.data_name}{fold_idx}_train.csv")
-        train_df = os.path.join(BASE_DIR, "data/training_sets", f"{args.data_name}{fold_idx}_train.csv")
-        #valid_df = os.path.join(data_dir, f"{args.data_name}{fold_idx}_valid.csv")
-        valid_df = os.path.join(BASE_DIR, "data/training_sets", f"{args.data_name}{fold_idx}_valid.csv")
+        train_df = os.path.join(exp_dir, "data", f"{args.data_name}{fold_idx}_train.csv")
+        valid_df = os.path.join(exp_dir, "data", f"{args.data_name}{fold_idx}_valid.csv")
 
         train_outpath = os.path.join(save_dir, f"train_{fold_idx}_processed.csv")
         valid_outpath = os.path.join(save_dir, f"valid_{fold_idx}_processed.csv")
