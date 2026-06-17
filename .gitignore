@@ -9,3 +9,6 @@ data/fep/*
 data/processed/*
 data/training_sets/*
 data/ts_training-sets/*
+
+scripts/AEV-PLIG_example/data/*
+scripts/tree-regression_example/data/*
