@@ -106,8 +106,6 @@ def make_predictions(config):
     """
     print("Saving predictions\n")
     data.to_csv(os.path.join(exp_dir, config.exp_name + "_predictions.csv"), index=False)
-    data.to_csv(os.path.join(BASE_DIR, "predictions", config.exp_name + "_predictions.csv"), index=False)
-
 
     logger = ExperimentLogger(exp_dir)
     logger.save_json("config", vars(config))
