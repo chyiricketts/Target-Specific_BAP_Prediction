@@ -1,4 +1,7 @@
 {
   "exp_name": "AEV-PLIG_example",
-  "data": "data/MCL1_all.csv"
+  "gnn_layers": 1,
+  "hidden_dim": 32,
+  "head": 1,
+  "activation_function": "leaky_relu"
 }

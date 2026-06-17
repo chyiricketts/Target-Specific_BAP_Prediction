@@ -3,8 +3,6 @@ Split sizes:
 Train: 212
 Valid: 54
 Preparing train.pt...
-processed paths:
-/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/scripts/AEV-PLIG_example/processed/train.pt
+Graph construction done. Saving to file.
 Preparing valid.pt...
-processed paths:
-/rds/general/user/cr725/home/aev-plig_research/github_tsBAP_official/scripts/AEV-PLIG_example/processed/valid.pt
+Graph construction done. Saving to file.

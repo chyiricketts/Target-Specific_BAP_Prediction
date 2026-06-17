@@ -1,0 +1,17 @@
+{
+  "experiment": {
+    "exp_name": "AEV-PLIG_example",
+    "gnn_layers": 1,
+    "hidden_dim": 32,
+    "head": 1,
+    "activation_function": "leaky_relu",
+    "model_prefix": "20260617-152750_model_GATv2Net_AEV-PLIG_example",
+    "test_data": "fep",
+    "test_data_complexes": 1184
+  },
+  "runtime": {
+    "total_seconds": 1.451263666152954,
+    "hours": 0.00040312879615359834,
+    "seconds_per_sample": 0.0012257294477643194
+  }
+}
