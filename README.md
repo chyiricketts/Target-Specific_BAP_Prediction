@@ -1,6 +1,25 @@
 # Target-Specific BAP Predictions
 ### Chyi Ricketts, MRes in Cancer Informatics
+
 In collaboration with the Ballester Lab at Imperial College London
+
+Read the paper: https://chyiricketts.onrender.com/papers/cr725_Ricketts_2026_Ballester_MResPaper.pdf
+
+## Repo Structure
+
+```text
+├── configs/  # Conda environments
+├── data/  # Download source databases
+├── figures/  # Final figures
+├── models/  # Best models for each protein target
+├── scripts/  # Shell entry points
+└── src/
+│   ├── data/  # scripts to process data
+│   ├── models/
+│   │   ├── AEV-PLIG-models/  # scripts to run target-specific AEV-PLIG
+│   │   └── tree-kernel-models/  # scripts to run target-specific tree/kernel models
+│   └── training-sets/  # scripts to create training sets
+```
 
 ## Creating Environments
 
@@ -232,4 +251,17 @@ tree-regression_example/
 ```
 
 ## Final Models
+
+Final models are located in: 
+```text
+models/
+├── models_cv/
+├── models_seeded/
+├── figures/
+├── tree-regression_example_cv_predictions.csv
+└── tree-regression_example_seeded_predictions.csv
+```
+
 IN PROGRESS. The best target-specific model will be placed here for reproducibility. This model still needs to be determined as this project is ongoing. 
+
+The best model for each protein along with its metadata will be upload. The best model is determined by a recall value and the tie breaker uses Kendall's Tau

@@ -1,5 +1,5 @@
 #!/bin/bash
-#PBS -l select=1:ncpus=2:mem=32gb
+#PBS -l select=1:ncpus=4:mem=256gb
 #PBS -l walltime=48:00:00
 #PBS -N out_trainingsets
 

@@ -677,7 +677,7 @@ if __name__ == "__main__":
         df = build_dataset(protein, pdbbind_data, bindingnet_data, bindingdb_data)
         df = add_fep_tanimoto(df, protein_fullname, morgan_gen)
 
-        output_dir = os.path.join(BASE_DIR, "data", "training_sets", protein)
+        output_dir = os.path.join(BASE_DIR, "data", "training_sets", "test", protein) # added test for rn 8/17/26
         os.makedirs(output_dir, exist_ok=True)
         df.to_csv(os.path.join(output_dir, f"ts-{protein}.csv"), index=False)
 
@@ -696,7 +696,7 @@ if __name__ == "__main__":
         stratified_splits, startified_folds_idx = stratified_kfold_split(protein, df)
         report_stratified = generate_split_report("stratified", protein, stratified_splits, startified_folds_idx, df, fps)
 
-        for threshold in np.arange(0.9, 0.9, -0.1): # change the thresholds starting pattern
+        for threshold in np.arange(0.9, -0.1, -0.1): # change the thresholds starting pattern
 
             print("\n  \n" + "*" * 60)
             print("Creating Training Sets for Protein: ", protein, "at threshold: ", threshold)
