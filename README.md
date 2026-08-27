@@ -14,7 +14,8 @@ The best performing models for each of the five protein targets: MCL1, SYK, HIF2
 ├── configs/  # Conda environments
 ├── data/  # Download source databases
 ├── figures/  # Final figures
-├── models/  # Best models for each protein target
+├── hyperparameters/  # Optuna hyperparameters for all ECIF::RF and ECIF::XGB models
+├── predictions/  # Final predictions for each best family-specific model
 ├── scripts/  # Shell entry points
 └── src/
 │   ├── data/  # scripts to process data
