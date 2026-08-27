@@ -1,6 +1,13 @@
 # Target-Specific BAP Predictions
-### Chyi Ricketts, MRes in Cancer Informatics
-In collaboration with the Ballester Lab at Imperial College London
+### Chyi Ricketts, MRes in Cancer Informatics, under the supervision of Dr. Pedro Ballester, Imperial College London
+
+Target-specific binding affinity prediction-based scoring functions are trained and evaluated in the accompanying [thesis](https://chyiricketts.onrender.com/papers/cr725_Ricketts_2026_Ballester_MResPaper.pdf). 
+
+In this repo:
+
+Methods for target-specific training set curation and model training for each model (ECIF::RF, ECIF::XGB, ECIF::SVR, PLEC::RF, PLEC::XGB, PLEC::SVR, and AEV-PLIG::GATv2) are shared
+The best performing models for each of the five protein targets: MCL1, SYK, HIF2α, PFKFB3, and MAPK14 are shared along with their hyperparameters and computational specifications"
+
 
 ## Creating Environments
 
@@ -231,5 +238,22 @@ tree-regression_example/
 └── tree-regression_example_seeded_predictions.csv
 ```
 
-## Final Models
-IN PROGRESS. The best target-specific model will be placed here for reproducibility. This model still needs to be determined as this project is ongoing. 
+## Final Hyperparameters
+
+Hyperparameter files from Optuna optimisation are provided in `hyperparameters/`.
+
+## Final Predictions
+
+Test set predictions on the Ross FEP Benchmark are provided for the best famiily-specific ECIF::RF model 
+configurations in `predictions/`. The best family-specific ECIF::RF model is
+selected by Overlap@5 with Kendall's τ used as a tiebreaker.
+
+| Protein | Best Threshold |
+|---------|---------------|
+| MCL1    | 0.9           |
+| SYK     | 0.3           |
+| HIF2α   | 0.5           |
+| PFKFB3  | 0.3           |
+| MAPK14  | 0.4           |
+
+
