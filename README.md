@@ -3,10 +3,12 @@
 
 Target-specific binding affinity prediction-based scoring functions are trained and evaluated in the accompanying [thesis](https://chyiricketts.onrender.com/papers/cr725_Ricketts_2026_Ballester_MResPaper.pdf). 
 
-In this repo:
-
-Methods for target-specific training set curation and model training for each model (ECIF::RF, ECIF::XGB, ECIF::SVR, PLEC::RF, PLEC::XGB, PLEC::SVR, and AEV-PLIG::GATv2) are shared
-The best performing models for each of the five protein targets: MCL1, SYK, HIF2α, PFKFB3, and MAPK14 are shared along with their hyperparameters and computational specifications"
+This repo contains: 
+- Download information for database sources
+- Code used for target-specific training set curation
+- Code used for training each model (ECIF::RF, ECIF::XGB, ECIF::SVR, PLEC::RF, PLEC::XGB, PLEC::SVR, and AEV-PLIG::GATv2)
+- Optuna tuned hyperparameters for ECIF::RF and ECIF::XGB models
+- The final predictions for performing models for each of the five protein targets
 
 ## Repo Structure
 
